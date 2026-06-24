@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Cab - Kdm Cab Service</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .booking-page {
+            padding: 120px 20px 80px;
+            background: linear-gradient(135deg, #f0f2f5 0%, #e8eafc 100%);
+        }
+        .booking-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 40px;
+        }
+        .booking-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .booking-form h2 {
+            margin-bottom: 30px;
+            color: #1a1a2e;
+        }
+        .form-group {
+            margin-bottom: 25px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+        .form-group select:focus, .form-group input:focus {
+            outline: none;
+            border-color: #ff6b35;
+        }
+        .cars-display {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .car-option {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .car-option:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b35;
+        }
+        .car-option.selected {
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffffff 100%);
+        }
+        .car-option-img {
+            width: 140px;
+            height: 90px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .car-option-details h3 {
+            margin-bottom: 8px;
+            color: #1a1a2e;
+        }
+        .car-option-details p {
+            color: #666;
+            font-size: 14px;
+        }
+        .car-price {
+            margin-left: auto;
+            font-size: 24px;
+            font-weight: 700;
+            color: #ff6b35;
+        }
+        .book-btn {
+            margin-top: 30px;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .book-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,107,53,0.4);
+        }
+        .book-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .map-section {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 500px;
+        }
+        .confirmation-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .confirmation-modal.show {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .modal-content i {
+            font-size: 64px;
+            color: #25d366;
+            margin-bottom: 20px;
+        }
+        .modal-content h2 {
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+        .modal-content p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .close-modal {
+            padding: 12px 40px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        @media (max-width: 992px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <a href="index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-car"></i>
+                        <span>Kdm Cab Service</span>
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="index.html#packages">Tour Packages <i class="fas fa-chevron-down" style="font-size: 12px; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Naina Devi Tour Packages</a>
+                            <a href="#">Jwala Devi Tour Packages</a>
+                            <a href="#">Chamunda Devi Tour Packages</a>
+                            <a href="#">Bagalamukhi Tour Packages</a>
+                            <a href="#">Chintpurni Tour Packages</a>
+                            <a href="#">Maa Chintpurni Tour Packages</a>
+                            <a href="#">Kullu Tour Packages</a>
+                            <a href="#">Manali Tour Packages</a>
+                            <a href="#">Morni Tour Packages</a>
+                            <a href="#">Shimla Tour Packages</a>
+                        </div>
+                    </li>
+                    <li><a href="index.html#fleet">Our Cabs</a></li>
+                    <li><a href="#">Locations</a></li>
+                    <li><a href="book.html" class="book-cab-btn">Book Cab</a></li>
+                </ul>
+                <a href="tel:+919803384033" class="nav-phone">
+                    <i class="fas fa-phone"></i> +91-9803384033
+                </a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="booking-page">
+        <div class="booking-container">
+            <div class="booking-form">
+                <h2><i class="fas fa-map-marker-alt" style="color: #ff6b35; margin-right: 10px;"></i>Book Your Ride</h2>
+                <div class="form-group">
+                    <label for="pickup">Pickup Location</label>
+                    <select id="pickup">
+                        <option value="">Select Pickup Location</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Mohali">Mohali</option>
+                        <option value="Panchkula">Panchkula</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Delhi Airport">Delhi Airport</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dropoff">Dropoff Location</label>
+                    <select id="dropoff">
+                        <option value="">Select Dropoff Location</option>
+                        <option value="Ludhiana">Ludhiana</option>
+                        <option value="Amritsar">Amritsar</option>
+                        <option value="Manali">Manali</option>
+                        <option value="Shimla">Shimla</option>
+                        <option value="Dehradun">Dehradun</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Delhi">Delhi</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date & Time</label>
+                    <input type="datetime-local" id="date">
+                </div>
+                <button class="book-btn" id="showCarsBtn" disabled>Show Available Cars</button>
+                <div id="carsSection" style="margin-top: 30px; display: none;">
+                    <h3 style="margin-bottom: 20px; color: #1a1a2e;">Available Cars</h3>
+                    <div class="cars-display" id="carsDisplay"></div>
+                    <button class="book-btn" id="confirmBtn" disabled>Confirm Booking</button>
+                </div>
+            </div>
+            <div class="map-section">
+                <iframe id="mapFrame" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d219249.15674761637!2d76.60069065!3d30.7333148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a82e6697ec039%3A0xf8de074467e43146!2sChandigarh%2C%20India!5e0!3m2!1sen!2sus!4v1687567890123!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <div class="confirmation-modal" id="confirmationModal">
+        <div class="modal-content">
+            <i class="fas fa-check-circle"></i>
+            <h2>Booking Confirmed!</h2>
+            <p>Thank you for choosing Kdm Cab Service. We will contact you shortly to confirm your booking.</p>
+            <button class="close-modal" onclick="closeModal()">Okay</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-car"></i>
+                    <span>Kdm Cab Service</span>
+                </div>
+                <p>&copy; 2026 Kdm Cab Service. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-contact">
+        <a href="tel:+919803384033" class="float-btn float-phone">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/919803384033" target="_blank" class="float-btn float-whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:info@kdmcabservice.com" class="float-btn float-email">
+            <i class="far fa-envelope"></i>
+        </a>
+    </div>
+
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Available cars data
+        const cars = [
+            {
+                name: "Maruti Dzire",
+                seats: 4,
+                bags: 2,
+                price: 12, // per km
+                img: "https://images.unsplash.com/photo-1542362567-b07e54358753?w=280&h=180&fit=crop"
+            },
+            {
+                name: "Toyota Etios",
+                seats: 4,
+                bags: 2,
+                price: 14,
+                img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=280&h=180&fit=crop"
+            },
+            {
+                name: "Maruti Ertiga",
+                seats: 6,
+                bags: 4,
+                price: 16,
+                img: "https://images.unsplash.com/photo-1606016159991-dfe4f2746ad7?w=280&h=180&fit=crop"
+            },
+            {
+                name: "Toyota Innova",
+                seats: 7,
+                bags: 6,
+                price: 20,
+                img: "https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=280&h=180&fit=crop"
+            },
+            {
+                name: "Toyota Innova Crysta",
+                seats: 7,
+                bags: 6,
+                price: 24,
+                img: "https://images.unsplash.com/photo-1621007947382-bb3c39e41fb3?w=280&h=180&fit=crop"
+            }
+        ];
+
+        // Distance between locations (km)
+        const distances = {
+            "Chandigarh-Ludhiana": 100,
+            "Chandigarh-Amritsar": 230,
+            "Chandigarh-Manali": 300,
+            "Chandigarh-Shimla": 110,
+            "Chandigarh-Dehradun": 170,
+            "Mohali-Ludhiana": 105,
+            "Delhi-Manali": 550,
+            "Delhi-Chandigarh": 250
+        };
+
+        let selectedCar = null;
+        const pickupEl = document.getElementById('pickup');
+        const dropoffEl = document.getElementById('dropoff');
+        const showCarsBtn = document.getElementById('showCarsBtn');
+        const carsSection = document.getElementById('carsSection');
+        const carsDisplay = document.getElementById('carsDisplay');
+        const confirmBtn = document.getElementById('confirmBtn');
+        const modal = document.getElementById('confirmationModal');
+        const mapFrame = document.getElementById('mapFrame');
+
+        // Check if pickup and dropoff are selected
+        function checkSelections() {
+            showCarsBtn.disabled = !(pickupEl.value && dropoffEl.value && document.getElementById('date').value);
+        }
+        pickupEl.addEventListener('change', checkSelections);
+        dropoffEl.addEventListener('change', checkSelections);
+        document.getElementById('date').addEventListener('change', checkSelections);
+
+        // Update map when locations change
+        function updateMap() {
+            if (pickupEl.value && dropoffEl.value) {
+                const pickup = encodeURIComponent(pickupEl.value);
+                const dropoff = encodeURIComponent(dropoffEl.value);
+                mapFrame.src = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d219249.15674761637!2d76.60069065!3d30.7333148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a82e6697ec039%3A0xf8de074467e43146!2s${pickup}!5e0!3m2!1sen!2sus!4v1687567890123!5m2!1sen!2sus`;
+            }
+        }
+        pickupEl.addEventListener('change', updateMap);
+        dropoffEl.addEventListener('change', updateMap);
+
+        // Show available cars
+        showCarsBtn.addEventListener('click', () => {
+            carsSection.style.display = 'block';
+            renderCars();
+        });
+
+        // Calculate distance
+        function getDistance(pickup, dropoff) {
+            const key1 = `${pickup}-${dropoff}`;
+            const key2 = `${dropoff}-${pickup}`;
+            return distances[key1] || distances[key2] || 200; // default 200km
+        }
+
+        // Render cars
+        function renderCars() {
+            const distance = getDistance(pickupEl.value, dropoffEl.value);
+            carsDisplay.innerHTML = cars.map(car => {
+                const totalPrice = distance * car.price;
+                return `
+                    <div class="car-option" data-price="${totalPrice}" data-name="${car.name}" onclick="selectCar(this)">
+                        <img src="${car.img}" alt="${car.name}" class="car-option-img">
+                        <div class="car-option-details">
+                            <h3>${car.name}</h3>
+                            <p><i class="fas fa-user"></i> ${car.seats} Seats &nbsp; <i class="fas fa-suitcase"></i> ${car.bags} Bags</p>
+                        </div>
+                        <div class="car-price">₹${totalPrice}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Select car
+        function selectCar(el) {
+            document.querySelectorAll('.car-option').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedCar = {
+                name: el.dataset.name,
+                price: el.dataset.price
+            };
+            confirmBtn.disabled = false;
+        }
+
+        // Confirm booking
+        confirmBtn.addEventListener('click', () => {
+            if (selectedCar) {
+                modal.classList.add('show');
+            }
+        });
+
+        // Close modal
+        window.closeModal = function() {
+            modal.classList.remove('show');
+            // Reset form
+            pickupEl.value = '';
+            dropoffEl.value = '';
+            document.getElementById('date').value = '';
+            carsSection.style.display = 'none';
+            selectedCar = null;
+            confirmBtn.disabled = true;
+            showCarsBtn.disabled = true;
+        };
+
+        // Scroll to top
+        const scrollBtn = document.getElementById('scrollToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) scrollBtn.classList.add('visible');
+            else scrollBtn.classList.remove('visible');
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

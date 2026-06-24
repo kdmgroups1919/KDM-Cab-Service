@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi to Manali One Way Cab Services | Kdm Cab Service</title>
+    <link rel="stylesheet" href="../../../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .route-hero {
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            padding: 60px 20px;
+            color: white;
+            text-align: center;
+        }
+        .booking-section {
+            background-color: #f8f9fa;
+            padding: 50px 20px;
+        }
+        .booking-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .booking-title h2 {
+            font-size: 28px;
+            color: #1a1a2e;
+            margin-bottom: 10px;
+        }
+        .booking-title .divider {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+        .booking-content {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .cars-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .car-item {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .car-item img {
+            width: 100%;
+            height: 130px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+        .car-item h4 {
+            margin: 0 0 6px 0;
+            color: #1a1a2e;
+            font-size: 18px;
+        }
+        .status-available {
+            color: #25d366;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .price-display {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .offer-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: #ff6b35;
+        }
+        .book-car-btn {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        .book-car-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,107,53,0.4);
+        }
+        .map-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .map-card iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+        @media (max-width: 992px) {
+            .booking-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">
+                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-car"></i>
+                        <span>Kdm Cab Service</span>
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="../../../index.html#packages">Tour Packages <i class="fas fa-chevron-down" style="font-size: 12px; margin-left: 5px;"></i></a>
+                        <div class="dropdown-content">
+                            <a href="chandigarh-to-ludhiana.html">Chandigarh to Ludhiana</a>
+                            <a href="chandigarh-to-amritsar.html">Chandigarh to Amritsar</a>
+                            <a href="chandigarh-to-dehradun.html">Chandigarh to Dehradun</a>
+                            <a href="chandigarh-to-dharamshala.html">Chandigarh to Dharamshala</a>
+                            <a href="shimla-to-delhi.html">Shimla to Delhi</a>
+                            <a href="chandigarh-to-manali.html">Chandigarh to Manali</a>
+                            <a href="delhi-to-manali.html">Delhi to Manali</a>
+                            <a href="chandigarh-to-delhi.html">Chandigarh to Delhi</a>
+                        </div>
+                    </li>
+                    <li><a href="../../../index.html#fleet">Our Cabs</a></li>
+                    <li><a href="../../../index.html#cities">Locations</a></li>
+                    <li><a href="../../../index.html#contact" class="book-cab-btn">Book Cab</a></li>
+                </ul>
+                <a href="tel:+91-9803384033" class="nav-phone">
+                    <i class="fas fa-phone"></i> +91-9803384033
+                </a>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="route-hero">
+        <div class="container">
+            <h1>Delhi to Manali One Way Cab Services</h1>
+            <p style="font-size: 28px; color: #ff6b35; font-weight: 700; margin-top: 10px;">Start From ₹ 3,500/-</p>
+        </div>
+    </section>
+
+    <section class="booking-section">
+        <div class="container">
+            <div class="booking-title">
+                <h2>BOOK TAXI FOR DELHI TO MANALI</h2>
+                <div class="divider"></div>
+            </div>
+            <div class="booking-content">
+                <div class="cars-list">
+                    <div class="car-item">
+                        <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=400&h=250&fit=crop" alt="Toyota Innova">
+                        <h4>Toyota Innova <span class="status-available">(Available)</span></h4>
+                        <div class="price-display">
+                            <span class="offer-price">₹ 3,500/-</span>
+                        </div>
+                        <a href="../../../booking-page.html?car=Toyota%20Innova&pickup=Delhi&dropoff=Manali&price=3500" class="book-car-btn">Book Toyota Innova</a>
+                    </div>
+                </div>
+                <div class="map-card">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d438549!2d77.1873!3d32.2400!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3904b3747b61e7a7%3A0x5e94392f09550697!2sManali%2C%20Himachal%20Pradesh!5e0!3m2!1sen!2sus!4v1782147733!5m2!1sen!2sus" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-car"></i>
+                    <span>Kdm Cab Service</span>
+                </div>
+                <p>&copy; 2026 Kdm Cab Service. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="floating-contact">
+        <a href="tel:+91-9803384033" class="float-btn float-phone">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://wa.me/919803384033" target="_blank" class="float-btn float-whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="mailto:info@kdmcabservice.com" class="float-btn float-email">
+            <i class="far fa-envelope"></i>
+        </a>
+    </div>
+
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../../../script.js"></script>
+</body>
+</html>
