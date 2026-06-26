@@ -1,8 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="KDM Cab Service offers premium Chandigarh cab rides to Amritsar, Manali, Shimla, Delhi, and nearby destinations with reliable vehicles, flexible booking, and support."
+    />
+    <meta name="theme-color" content="#0f0a1e" />
+    <meta
+      property="og:title"
+      content="KDM Cab Service | Premium Rides from Chandigarh"
+    />
+    <meta
+      property="og:description"
+      content="Book comfortable one-way taxi rides and tour packages from Chandigarh with real destination routes, clean cars and 24/7 support."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&h=630&fit=crop"
+    />
+    <meta property="og:url" content="http://localhost:8000/index.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="KDM Cab Service | Premium Rides from Chandigarh"
+    />
+    <meta
+      name="twitter:description"
+      content="Book comfortable cab rides from Chandigarh to Amritsar, Manali, Shimla, Delhi and more with trusted vehicles and service."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <title>KDM Cab Service | Premium Rides from Chandigarh</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"
@@ -22,47 +51,98 @@
       }
 
       :root {
-        --gold: #c9a84c;
-        --gold-light: #e8c97a;
-        --gold-dark: #9a7a32;
-        --night: #0a0a0f;
-        --night2: #111118;
-        --night3: #16161f;
-        --card-bg: rgba(255, 255, 255, 0.035);
-        --card-border: rgba(201, 168, 76, 0.18);
-        --text: #f0ede6;
-        --muted: rgba(240, 237, 230, 0.5);
+        --violet: #7c3aed;
+        --violet-light: #a78bfa;
+        --violet-dark: #5b21b6;
+        --pink: #ec4899;
+        --pink-light: #f9a8d4;
+        --orange: #f97316;
+        --orange-light: #fdba74;
+        --cyan: #06b6d4;
+        --cyan-light: #67e8f9;
+        --emerald: #10b981;
+        --emerald-light: #6ee7b7;
+        --yellow: #eab308;
+        --yellow-light: #fde047;
         --white: #fff;
-        --radius: 16px;
-        --glow: 0 0 40px rgba(201, 168, 76, 0.15);
+        --off-white: #fafaf9;
+        --ink: #0f0a1e;
+        --ink2: #1a1030;
+        --ink3: #221540;
+        --card-bg: rgba(255, 255, 255, 0.06);
+        --card-border: rgba(255, 255, 255, 0.12);
+        --text: #f5f0ff;
+        --muted: rgba(245, 240, 255, 0.55);
+        --radius: 18px;
       }
 
       html {
         scroll-behavior: smooth;
       }
-
       body {
         font-family: "Inter", sans-serif;
-        background: var(--night);
+        background: var(--ink);
         color: var(--text);
         overflow-x: hidden;
       }
 
+      /* ── ANIMATED BG GRADIENT ── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            ellipse 70% 50% at 10% 20%,
+            rgba(124, 58, 237, 0.22) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 50% 40% at 90% 10%,
+            rgba(6, 182, 212, 0.15) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 60% 50% at 50% 90%,
+            rgba(236, 72, 153, 0.12) 0%,
+            transparent 65%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 80% 60%,
+            rgba(249, 115, 22, 0.1) 0%,
+            transparent 55%
+          );
+        animation: bgPulse 12s ease-in-out infinite alternate;
+      }
+      @keyframes bgPulse {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.7;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
       /* ── CURSOR GLOW ── */
       #cursor-glow {
-        width: 400px;
-        height: 400px;
+        width: 500px;
+        height: 500px;
         border-radius: 50%;
         background: radial-gradient(
           circle,
-          rgba(201, 168, 76, 0.06) 0%,
+          rgba(124, 58, 237, 0.08) 0%,
           transparent 70%
         );
         position: fixed;
         pointer-events: none;
         z-index: 0;
         transform: translate(-50%, -50%);
-        transition: transform 0.1s linear;
+        transition: transform 0.08s linear;
       }
 
       /* ── PARTICLES ── */
@@ -76,18 +156,16 @@
       .particle {
         position: absolute;
         border-radius: 50%;
-        background: var(--gold);
-        animation: floatParticle linear infinite;
+        animation: floatP linear infinite;
         opacity: 0;
       }
-
-      @keyframes floatParticle {
+      @keyframes floatP {
         0% {
           opacity: 0;
           transform: translateY(0) scale(0);
         }
         10% {
-          opacity: 0.6;
+          opacity: 0.7;
           transform: translateY(-20px) scale(1);
         }
         90% {
@@ -112,11 +190,11 @@
         transition: all 0.4s ease;
       }
       nav.scrolled {
-        background: rgba(10, 10, 15, 0.92);
+        background: rgba(15, 10, 30, 0.92);
         backdrop-filter: blur(20px);
         padding: 14px 60px;
-        border-bottom: 1px solid var(--card-border);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        border-bottom: 1px solid rgba(124, 58, 237, 0.3);
+        box-shadow: 0 4px 40px rgba(124, 58, 237, 0.15);
       }
       .logo {
         display: flex;
@@ -130,16 +208,16 @@
         letter-spacing: 0.5px;
       }
       .logo-icon {
-        width: 42px;
-        height: 42px;
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        border-radius: 10px;
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 18px;
-        color: var(--night);
-        box-shadow: 0 4px 15px rgba(201, 168, 76, 0.4);
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(124, 58, 237, 0.5);
       }
       .nav-links {
         display: flex;
@@ -161,34 +239,45 @@
         bottom: -4px;
         left: 0;
         right: 0;
-        height: 1px;
-        background: var(--gold);
+        height: 2px;
+        background: linear-gradient(90deg, var(--violet), var(--pink));
         transform: scaleX(0);
         transform-origin: left;
         transition: transform 0.3s ease;
       }
       .nav-links a:hover {
-        color: var(--gold);
+        color: var(--violet-light);
       }
       .nav-links a:hover::after {
         transform: scaleX(1);
       }
       .nav-cta {
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        color: var(--night) !important;
+        background: linear-gradient(
+          135deg,
+          var(--violet),
+          var(--pink)
+        ) !important;
+        color: #fff !important;
         padding: 10px 24px;
-        border-radius: 8px;
+        border-radius: 10px;
         font-weight: 700 !important;
-        font-size: 14px !important;
-        box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+        box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
         transition: all 0.3s ease !important;
       }
       .nav-cta:hover {
         transform: translateY(-2px) !important;
-        box-shadow: 0 8px 30px rgba(201, 168, 76, 0.5) !important;
+        box-shadow: 0 8px 30px rgba(236, 72, 153, 0.5) !important;
       }
       .nav-cta::after {
         display: none !important;
+      }
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 22px;
+        cursor: pointer;
       }
 
       /* ── HERO ── */
@@ -201,66 +290,61 @@
         text-align: center;
         padding: 140px 20px 80px;
         position: relative;
-        background: radial-gradient(
-            ellipse 80% 60% at 50% 0%,
-            rgba(201, 168, 76, 0.08) 0%,
-            transparent 70%
-          ),
-          radial-gradient(
-            ellipse 40% 40% at 20% 80%,
-            rgba(201, 168, 76, 0.04) 0%,
-            transparent 60%
-          ),
-          var(--night);
       }
 
       .hero-eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: rgba(201, 168, 76, 0.1);
-        border: 1px solid var(--card-border);
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.35);
         padding: 8px 20px;
         border-radius: 100px;
         font-size: 12px;
         font-weight: 600;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        color: var(--gold);
+        color: var(--violet-light);
         margin-bottom: 32px;
         animation: fadeSlideDown 0.8s ease both;
       }
-      .hero-eyebrow i {
-        font-size: 10px;
-      }
-
       .hero h1 {
         font-family: "Syne", sans-serif;
-        font-size: clamp(48px, 7vw, 96px);
+        font-size: clamp(46px, 7vw, 96px);
         font-weight: 800;
         line-height: 1;
         letter-spacing: -2px;
         animation: fadeSlideDown 0.9s 0.1s ease both;
       }
-      .hero h1 .gold-word {
+      .hero h1 .g1 {
         background: linear-gradient(
           135deg,
-          var(--gold-light),
-          var(--gold),
-          var(--gold-dark)
+          var(--violet-light),
+          var(--pink),
+          var(--orange)
         );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero h1 .g2 {
+        background: linear-gradient(135deg, var(--cyan), var(--emerald));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
 
       .hero-sub {
-        max-width: 560px;
+        max-width: 640px;
         margin: 24px auto 0;
         color: var(--muted);
         font-size: 17px;
         line-height: 1.7;
         animation: fadeSlideDown 1s 0.2s ease both;
+      }
+
+      .hero-sub strong {
+        color: var(--white);
       }
 
       .hero-stats {
@@ -277,7 +361,21 @@
         font-family: "Syne", sans-serif;
         font-size: 36px;
         font-weight: 800;
-        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      }
+      .stat-num.s1 {
+        background: linear-gradient(135deg, var(--violet-light), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .stat-num.s2 {
+        background: linear-gradient(135deg, var(--cyan), var(--emerald));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .stat-num.s3 {
+        background: linear-gradient(135deg, var(--orange), var(--yellow));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -290,21 +388,24 @@
       }
       .stat-divider {
         width: 1px;
-        background: var(--card-border);
+        background: rgba(255, 255, 255, 0.12);
         height: 50px;
         align-self: center;
       }
 
       /* ── BOOKING WIDGET ── */
       .booking-widget {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--card-border);
-        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(124, 58, 237, 0.3);
+        border-radius: 24px;
         padding: 8px;
         max-width: 760px;
         width: 100%;
-        backdrop-filter: blur(20px);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), var(--glow);
+        backdrop-filter: blur(30px);
+        box-shadow:
+          0 20px 60px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(124, 58, 237, 0.1) inset,
+          0 0 80px rgba(124, 58, 237, 0.08);
         animation: fadeSlideUp 1.1s 0.4s ease both;
         position: relative;
         z-index: 10;
@@ -314,7 +415,7 @@
         display: flex;
         gap: 4px;
         background: rgba(0, 0, 0, 0.3);
-        border-radius: 12px;
+        border-radius: 16px;
         padding: 4px;
         margin-bottom: 20px;
       }
@@ -327,20 +428,19 @@
         font-size: 14px;
         font-weight: 600;
         cursor: pointer;
-        border-radius: 9px;
+        border-radius: 12px;
         transition: all 0.3s ease;
         font-family: "Inter", sans-serif;
       }
       .tab-btn.active {
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        color: var(--night);
-        box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
       }
 
       .widget-body {
         padding: 0 12px 12px;
       }
-
       .widget-row {
         display: flex;
         gap: 12px;
@@ -349,9 +449,9 @@
 
       .widget-field {
         flex: 1;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
         padding: 14px 18px;
         display: flex;
         align-items: center;
@@ -359,10 +459,11 @@
         transition: border-color 0.3s;
       }
       .widget-field:focus-within {
-        border-color: var(--gold);
+        border-color: var(--violet);
+        box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
       }
       .widget-field i {
-        color: var(--gold);
+        color: var(--violet-light);
         font-size: 14px;
         flex-shrink: 0;
       }
@@ -378,17 +479,23 @@
         cursor: pointer;
       }
       .widget-field select option {
-        background: #1a1a2e;
-        color: var(--text);
+        background: #1a1030;
       }
 
       .widget-search-btn {
         width: 100%;
-        padding: 16px;
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        padding: 17px;
+        background: linear-gradient(
+          135deg,
+          var(--violet),
+          var(--pink),
+          var(--orange)
+        );
+        background-size: 200% 200%;
+        animation: gradShift 4s ease infinite;
         border: none;
-        border-radius: 12px;
-        color: var(--night);
+        border-radius: 14px;
+        color: #fff;
         font-family: "Inter", sans-serif;
         font-size: 16px;
         font-weight: 700;
@@ -402,17 +509,25 @@
       }
       .widget-search-btn:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(201, 168, 76, 0.4);
+        box-shadow: 0 12px 40px rgba(124, 58, 237, 0.5);
       }
-      .widget-search-btn:active {
-        transform: translateY(0);
+      @keyframes gradShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
 
       /* ── CAR RESULTS ── */
       .car-results {
         display: none;
         margin-top: 16px;
-        border-top: 1px solid var(--card-border);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
         padding-top: 16px;
       }
       .car-results h4 {
@@ -422,28 +537,75 @@
         text-transform: uppercase;
         margin-bottom: 12px;
       }
-
+      .package-results {
+        display: grid;
+        gap: 12px;
+      }
+      .package-card {
+        display: block;
+        border-radius: 18px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        text-decoration: none;
+        color: inherit;
+        transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+      }
+      .package-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+      }
+      .package-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+      .package-card-body {
+        padding: 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .package-card-title {
+        font-size: 15px;
+        font-weight: 700;
+      }
+      .package-card-meta {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 13px;
+        color: var(--muted);
+        align-items: center;
+      }
+      .package-card-meta span {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
       .car-item {
         display: flex;
         align-items: center;
         gap: 16px;
         padding: 14px;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.07);
         cursor: pointer;
         transition: all 0.3s ease;
         margin-bottom: 10px;
       }
       .car-item:hover {
-        background: rgba(201, 168, 76, 0.07);
-        border-color: var(--gold);
+        background: rgba(124, 58, 237, 0.12);
+        border-color: var(--violet);
         transform: translateX(6px);
       }
       .car-item img {
         width: 100px;
         height: 64px;
-        border-radius: 8px;
+        border-radius: 10px;
         object-fit: cover;
       }
       .car-item-info {
@@ -458,14 +620,8 @@
         font-size: 13px;
         color: var(--muted);
       }
-      .car-item-price {
-        font-family: "Syne", sans-serif;
-        font-size: 22px;
-        font-weight: 800;
-        color: var(--gold);
-      }
 
-      /* ── SCROLL INDICATOR ── */
+      /* ── SCROLL HINT ── */
       .scroll-hint {
         position: absolute;
         bottom: 36px;
@@ -493,7 +649,7 @@
         content: "";
         width: 4px;
         height: 8px;
-        background: var(--gold);
+        background: linear-gradient(var(--violet), var(--pink));
         border-radius: 2px;
         animation: scrollBounce 1.8s ease infinite;
       }
@@ -514,7 +670,6 @@
         position: relative;
         z-index: 1;
       }
-
       .section-header {
         text-align: center;
         margin-bottom: 60px;
@@ -525,9 +680,36 @@
         font-weight: 700;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: var(--gold);
         margin-bottom: 16px;
+        padding: 5px 16px;
+        border-radius: 100px;
       }
+      .ey-violet {
+        color: var(--violet-light);
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.3);
+      }
+      .ey-cyan {
+        color: var(--cyan-light);
+        background: rgba(6, 182, 212, 0.12);
+        border: 1px solid rgba(6, 182, 212, 0.25);
+      }
+      .ey-emerald {
+        color: var(--emerald-light);
+        background: rgba(16, 185, 129, 0.12);
+        border: 1px solid rgba(16, 185, 129, 0.25);
+      }
+      .ey-orange {
+        color: var(--orange-light);
+        background: rgba(249, 115, 22, 0.12);
+        border: 1px solid rgba(249, 115, 22, 0.25);
+      }
+      .ey-pink {
+        color: var(--pink-light);
+        background: rgba(236, 72, 153, 0.12);
+        border: 1px solid rgba(236, 72, 153, 0.25);
+      }
+
       .section-header h2 {
         font-family: "Syne", sans-serif;
         font-size: clamp(32px, 4vw, 52px);
@@ -544,9 +726,13 @@
       /* ── ROUTES ── */
       .routes-section {
         padding: 100px 60px;
-        background: var(--night2);
+        background: linear-gradient(
+          180deg,
+          var(--ink) 0%,
+          #130d28 50%,
+          var(--ink) 100%
+        );
       }
-
       .routes-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -565,25 +751,91 @@
         transition: all 0.4s ease;
         position: relative;
       }
-      .route-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(201, 168, 76, 0.06),
-          transparent
-        );
-        opacity: 0;
-        transition: opacity 0.4s;
-      }
       .route-card:hover {
-        transform: translateY(-8px);
-        border-color: var(--gold);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), var(--glow);
+        transform: translateY(-10px);
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
       }
-      .route-card:hover::before {
-        opacity: 1;
+
+      .how-section {
+        padding: 100px 60px;
+        background: linear-gradient(180deg, #0f0a1e 0%, #130c2d 100%);
+      }
+      .how-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+        max-width: 1260px;
+        margin: 0 auto;
+      }
+      .step-card {
+        border-radius: var(--radius);
+        padding: 28px;
+        border: 1px solid var(--card-border);
+        background: rgba(255, 255, 255, 0.05);
+        transition:
+          transform 0.35s ease,
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+      .step-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(124, 58, 237, 0.45);
+        box-shadow: 0 18px 36px rgba(124, 58, 237, 0.15);
+      }
+      .step-number {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: #fff;
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        margin-bottom: 18px;
+        font-size: 16px;
+      }
+      .step-card h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+      .step-card p {
+        color: var(--muted);
+        line-height: 1.75;
+        font-size: 15px;
+      }
+
+      /* Each route card gets a unique accent on hover */
+      .route-card:nth-child(1):hover {
+        border-color: var(--violet);
+        box-shadow: 0 24px 60px rgba(124, 58, 237, 0.25);
+      }
+      .route-card:nth-child(2):hover {
+        border-color: var(--pink);
+        box-shadow: 0 24px 60px rgba(236, 72, 153, 0.25);
+      }
+      .route-card:nth-child(3):hover {
+        border-color: var(--cyan);
+        box-shadow: 0 24px 60px rgba(6, 182, 212, 0.25);
+      }
+      .route-card:nth-child(4):hover {
+        border-color: var(--orange);
+        box-shadow: 0 24px 60px rgba(249, 115, 22, 0.25);
+      }
+      .route-card:nth-child(5):hover {
+        border-color: var(--emerald);
+        box-shadow: 0 24px 60px rgba(16, 185, 129, 0.25);
+      }
+      .route-card:nth-child(6):hover {
+        border-color: var(--yellow);
+        box-shadow: 0 24px 60px rgba(234, 179, 8, 0.25);
+      }
+      .route-card:nth-child(7):hover {
+        border-color: var(--violet);
+        box-shadow: 0 24px 60px rgba(124, 58, 237, 0.25);
+      }
+      .route-card:nth-child(8):hover {
+        border-color: var(--pink);
+        box-shadow: 0 24px 60px rgba(236, 72, 153, 0.25);
       }
 
       .route-img-wrap {
@@ -600,21 +852,45 @@
       }
       .route-card:hover .route-img-wrap img {
         transform: scale(1.08);
-        filter: brightness(0.85);
+        filter: brightness(0.9);
       }
       .route-badge {
         position: absolute;
         top: 16px;
         left: 16px;
-        background: rgba(10, 10, 15, 0.7);
+        background: rgba(15, 10, 30, 0.75);
         backdrop-filter: blur(8px);
-        border: 1px solid var(--card-border);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         padding: 6px 12px;
         border-radius: 100px;
         font-size: 11px;
         font-weight: 600;
-        color: var(--gold);
+        color: #fff;
         letter-spacing: 0.5px;
+      }
+      .route-badge.b1 {
+        border-color: rgba(124, 58, 237, 0.5);
+        color: var(--violet-light);
+      }
+      .route-badge.b2 {
+        border-color: rgba(236, 72, 153, 0.5);
+        color: var(--pink-light);
+      }
+      .route-badge.b3 {
+        border-color: rgba(6, 182, 212, 0.5);
+        color: var(--cyan-light);
+      }
+      .route-badge.b4 {
+        border-color: rgba(249, 115, 22, 0.5);
+        color: var(--orange-light);
+      }
+      .route-badge.b5 {
+        border-color: rgba(16, 185, 129, 0.5);
+        color: var(--emerald-light);
+      }
+      .route-badge.b6 {
+        border-color: rgba(234, 179, 8, 0.5);
+        color: var(--yellow-light);
       }
 
       .route-info {
@@ -631,30 +907,14 @@
       }
       .route-path i {
         font-size: 10px;
-        color: var(--gold);
-      }
-      .route-price {
-        font-size: 26px;
-        font-weight: 800;
-        font-family: "Syne", sans-serif;
-        background: linear-gradient(135deg, var(--gold-light), var(--gold));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-      .route-price span {
-        font-size: 13px;
-        font-weight: 400;
-        color: var(--muted);
-        -webkit-text-fill-color: var(--muted);
+        color: var(--violet-light);
       }
 
       /* ── FLEET ── */
       .fleet-section {
         padding: 100px 60px;
-        background: var(--night);
+        background: linear-gradient(180deg, var(--ink) 0%, #0d0b22 100%);
       }
-
       .fleet-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -662,6 +922,7 @@
         max-width: 1300px;
         margin: 0 auto;
       }
+
       .fleet-card {
         background: var(--card-bg);
         border: 1px solid var(--card-border);
@@ -672,9 +933,31 @@
         position: relative;
       }
       .fleet-card:hover {
-        transform: translateY(-8px) scale(1.01);
-        border-color: var(--gold);
-        box-shadow: var(--glow);
+        transform: translateY(-10px) scale(1.01);
+      }
+      .fleet-card:nth-child(1):hover {
+        border-color: var(--violet);
+        box-shadow: 0 20px 50px rgba(124, 58, 237, 0.3);
+      }
+      .fleet-card:nth-child(2):hover {
+        border-color: var(--cyan);
+        box-shadow: 0 20px 50px rgba(6, 182, 212, 0.3);
+      }
+      .fleet-card:nth-child(3):hover {
+        border-color: var(--emerald);
+        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.3);
+      }
+      .fleet-card:nth-child(4):hover {
+        border-color: var(--orange);
+        box-shadow: 0 20px 50px rgba(249, 115, 22, 0.3);
+      }
+      .fleet-card:nth-child(5):hover {
+        border-color: var(--pink);
+        box-shadow: 0 20px 50px rgba(236, 72, 153, 0.3);
+      }
+      .fleet-card:nth-child(6):hover {
+        border-color: var(--yellow);
+        box-shadow: 0 20px 50px rgba(234, 179, 8, 0.3);
       }
 
       .fleet-img-wrap {
@@ -714,27 +997,44 @@
         gap: 5px;
       }
       .fleet-meta i {
-        color: var(--gold);
+        color: var(--violet-light);
       }
 
       .fleet-type-badge {
         position: absolute;
         top: 14px;
         right: 14px;
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        color: var(--night);
-        padding: 5px 10px;
-        border-radius: 6px;
+        padding: 5px 12px;
+        border-radius: 8px;
         font-size: 10px;
         font-weight: 800;
         letter-spacing: 0.5px;
         text-transform: uppercase;
+        color: #fff;
+      }
+      .fleet-card:nth-child(1) .fleet-type-badge {
+        background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+      }
+      .fleet-card:nth-child(2) .fleet-type-badge {
+        background: linear-gradient(135deg, var(--cyan), #0891b2);
+      }
+      .fleet-card:nth-child(3) .fleet-type-badge {
+        background: linear-gradient(135deg, var(--emerald), #059669);
+      }
+      .fleet-card:nth-child(4) .fleet-type-badge {
+        background: linear-gradient(135deg, var(--orange), #ea580c);
+      }
+      .fleet-card:nth-child(5) .fleet-type-badge {
+        background: linear-gradient(135deg, var(--pink), #db2777);
+      }
+      .fleet-card:nth-child(6) .fleet-type-badge {
+        background: linear-gradient(135deg, var(--yellow), #ca8a04);
       }
 
       /* ── WHY ── */
       .why-section {
         padding: 100px 60px;
-        background: var(--night2);
+        background: linear-gradient(180deg, #0d0b22 0%, #130d28 100%);
       }
       .why-grid {
         display: grid;
@@ -743,59 +1043,122 @@
         max-width: 1300px;
         margin: 0 auto;
       }
+
       .why-card {
         padding: 36px 30px;
-        background: var(--card-bg);
         border: 1px solid var(--card-border);
         border-radius: var(--radius);
         transition: all 0.4s ease;
         position: relative;
         overflow: hidden;
+        background: var(--card-bg);
       }
-      .why-card::after {
+      .why-card::before {
         content: "";
         position: absolute;
-        bottom: 0;
+        top: 0;
         left: 0;
         right: 0;
-        height: 2px;
-        background: linear-gradient(90deg, var(--gold), transparent);
+        height: 3px;
         transform: scaleX(0);
         transform-origin: left;
         transition: transform 0.4s ease;
       }
+      .why-card:nth-child(1)::before {
+        background: linear-gradient(90deg, var(--violet), var(--pink));
+      }
+      .why-card:nth-child(2)::before {
+        background: linear-gradient(90deg, var(--pink), var(--orange));
+      }
+      .why-card:nth-child(3)::before {
+        background: linear-gradient(90deg, var(--cyan), var(--emerald));
+      }
+      .why-card:nth-child(4)::before {
+        background: linear-gradient(90deg, var(--emerald), var(--cyan));
+      }
+      .why-card:nth-child(5)::before {
+        background: linear-gradient(90deg, var(--orange), var(--yellow));
+      }
+      .why-card:nth-child(6)::before {
+        background: linear-gradient(90deg, var(--violet), var(--cyan));
+      }
       .why-card:hover {
         transform: translateY(-6px);
-        background: rgba(201, 168, 76, 0.05);
-        border-color: var(--gold);
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
       }
-      .why-card:hover::after {
+      .why-card:hover::before {
         transform: scaleX(1);
       }
 
       .why-icon {
         width: 52px;
         height: 52px;
-        background: linear-gradient(
-          135deg,
-          rgba(201, 168, 76, 0.15),
-          rgba(201, 168, 76, 0.05)
-        );
-        border: 1px solid var(--card-border);
         border-radius: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 22px;
-        color: var(--gold);
         margin-bottom: 20px;
         transition: all 0.3s;
+        border: 1px solid var(--card-border);
       }
-      .why-card:hover .why-icon {
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        color: var(--night);
-        box-shadow: 0 6px 20px rgba(201, 168, 76, 0.3);
+      .why-card:nth-child(1) .why-icon {
+        background: rgba(124, 58, 237, 0.15);
+        color: var(--violet-light);
       }
+      .why-card:nth-child(2) .why-icon {
+        background: rgba(236, 72, 153, 0.15);
+        color: var(--pink-light);
+      }
+      .why-card:nth-child(3) .why-icon {
+        background: rgba(6, 182, 212, 0.15);
+        color: var(--cyan-light);
+      }
+      .why-card:nth-child(4) .why-icon {
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--emerald-light);
+      }
+      .why-card:nth-child(5) .why-icon {
+        background: rgba(249, 115, 22, 0.15);
+        color: var(--orange-light);
+      }
+      .why-card:nth-child(6) .why-icon {
+        background: rgba(124, 58, 237, 0.15);
+        color: var(--violet-light);
+      }
+
+      .why-card:nth-child(1):hover .why-icon {
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+      }
+      .why-card:nth-child(2):hover .why-icon {
+        background: linear-gradient(135deg, var(--pink), var(--orange));
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+      }
+      .why-card:nth-child(3):hover .why-icon {
+        background: linear-gradient(135deg, var(--cyan), var(--emerald));
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+      }
+      .why-card:nth-child(4):hover .why-icon {
+        background: linear-gradient(135deg, var(--emerald), var(--cyan));
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+      }
+      .why-card:nth-child(5):hover .why-icon {
+        background: linear-gradient(135deg, var(--orange), var(--yellow));
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+      }
+      .why-card:nth-child(6):hover .why-icon {
+        background: linear-gradient(135deg, var(--violet), var(--cyan));
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+      }
+
       .why-card h3 {
         font-size: 17px;
         font-weight: 700;
@@ -810,9 +1173,8 @@
       /* ── REVIEWS ── */
       .reviews-section {
         padding: 100px 60px;
-        background: var(--night);
+        background: linear-gradient(180deg, #130d28 0%, var(--ink) 100%);
       }
-
       .reviews-rating {
         display: flex;
         align-items: center;
@@ -820,19 +1182,27 @@
         justify-content: center;
         margin-bottom: 50px;
       }
-      .reviews-rating .big-score {
+      .big-score {
         font-family: "Syne", sans-serif;
         font-size: 64px;
         font-weight: 800;
-        background: linear-gradient(135deg, var(--gold-light), var(--gold));
+        background: linear-gradient(
+          135deg,
+          var(--violet-light),
+          var(--pink),
+          var(--orange)
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
       .rating-right .stars {
-        color: var(--gold);
         font-size: 20px;
         letter-spacing: 2px;
+        background: linear-gradient(90deg, var(--yellow), var(--orange));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
       .rating-right p {
         color: var(--muted);
@@ -850,17 +1220,17 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        width: 100px;
+        width: 120px;
         z-index: 2;
         pointer-events: none;
       }
       .reviews-track-wrap::before {
         left: 0;
-        background: linear-gradient(to right, var(--night), transparent);
+        background: linear-gradient(to right, var(--ink), transparent);
       }
       .reviews-track-wrap::after {
         right: 0;
-        background: linear-gradient(to left, var(--night), transparent);
+        background: linear-gradient(to left, var(--ink), transparent);
       }
 
       .reviews-track {
@@ -872,7 +1242,6 @@
       .reviews-track:hover {
         animation-play-state: paused;
       }
-
       @keyframes scrollTrack {
         0% {
           transform: translateX(0);
@@ -889,16 +1258,38 @@
         padding: 28px;
         width: 340px;
         flex-shrink: 0;
-        transition: border-color 0.3s;
+        transition: all 0.3s;
       }
       .review-card:hover {
-        border-color: var(--gold);
+        border-color: var(--violet);
       }
+      .review-card:nth-child(6n + 1):hover {
+        border-color: var(--violet);
+      }
+      .review-card:nth-child(6n + 2):hover {
+        border-color: var(--pink);
+      }
+      .review-card:nth-child(6n + 3):hover {
+        border-color: var(--cyan);
+      }
+      .review-card:nth-child(6n + 4):hover {
+        border-color: var(--emerald);
+      }
+      .review-card:nth-child(6n + 5):hover {
+        border-color: var(--orange);
+      }
+      .review-card:nth-child(6n + 6):hover {
+        border-color: var(--yellow);
+      }
+
       .review-stars {
-        color: var(--gold);
         font-size: 13px;
         letter-spacing: 1px;
         margin-bottom: 14px;
+        background: linear-gradient(90deg, var(--yellow), var(--orange));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
       .review-text {
         font-size: 15px;
@@ -915,14 +1306,13 @@
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
         display: flex;
         align-items: center;
         justify-content: center;
         font-family: "Syne", sans-serif;
         font-weight: 800;
         font-size: 16px;
-        color: var(--night);
+        color: #fff;
         flex-shrink: 0;
       }
       .review-author-info strong {
@@ -938,7 +1328,7 @@
       /* ── CITIES ── */
       .cities-section {
         padding: 100px 60px;
-        background: var(--night2);
+        background: linear-gradient(180deg, var(--ink) 0%, #130d28 100%);
       }
       .cities-grid {
         display: grid;
@@ -947,20 +1337,44 @@
         max-width: 1300px;
         margin: 0 auto;
       }
+
       .city-card {
         position: relative;
         border-radius: var(--radius);
         overflow: hidden;
-        height: 200px;
+        height: 210px;
         cursor: pointer;
         border: 1px solid var(--card-border);
         transition: all 0.4s ease;
       }
       .city-card:hover {
         transform: scale(1.03);
-        border-color: var(--gold);
-        box-shadow: var(--glow);
       }
+      .city-card:nth-child(1):hover {
+        border-color: var(--violet);
+        box-shadow: 0 20px 50px rgba(124, 58, 237, 0.3);
+      }
+      .city-card:nth-child(2):hover {
+        border-color: var(--pink);
+        box-shadow: 0 20px 50px rgba(236, 72, 153, 0.3);
+      }
+      .city-card:nth-child(3):hover {
+        border-color: var(--cyan);
+        box-shadow: 0 20px 50px rgba(6, 182, 212, 0.3);
+      }
+      .city-card:nth-child(4):hover {
+        border-color: var(--emerald);
+        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.3);
+      }
+      .city-card:nth-child(5):hover {
+        border-color: var(--orange);
+        box-shadow: 0 20px 50px rgba(249, 115, 22, 0.3);
+      }
+      .city-card:nth-child(6):hover {
+        border-color: var(--yellow);
+        box-shadow: 0 20px 50px rgba(234, 179, 8, 0.3);
+      }
+
       .city-card img {
         width: 100%;
         height: 100%;
@@ -993,20 +1407,42 @@
       }
       .city-label span {
         font-size: 12px;
-        color: var(--gold);
         display: block;
         margin-bottom: 4px;
         font-weight: 400;
         font-family: "Inter", sans-serif;
+      }
+      .city-card:nth-child(1) .city-label span {
+        color: var(--violet-light);
+      }
+      .city-card:nth-child(2) .city-label span {
+        color: var(--pink-light);
+      }
+      .city-card:nth-child(3) .city-label span {
+        color: var(--cyan-light);
+      }
+      .city-card:nth-child(4) .city-label span {
+        color: var(--emerald-light);
+      }
+      .city-card:nth-child(5) .city-label span {
+        color: var(--orange-light);
+      }
+      .city-card:nth-child(6) .city-label span {
+        color: var(--yellow-light);
       }
 
       /* ── CTA ── */
       .cta-section {
         padding: 100px 60px;
         text-align: center;
-        background: var(--night);
         position: relative;
         overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          #0f0a1e 0%,
+          #1a0e3a 40%,
+          #0f0a1e 100%
+        );
       }
       .cta-section::before {
         content: "";
@@ -1014,15 +1450,26 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 800px;
-        height: 800px;
+        width: 900px;
+        height: 900px;
         background: radial-gradient(
           circle,
-          rgba(201, 168, 76, 0.07) 0%,
+          rgba(124, 58, 237, 0.1) 0%,
+          rgba(236, 72, 153, 0.05) 40%,
           transparent 70%
         );
         pointer-events: none;
+        animation: ctaGlow 6s ease-in-out infinite alternate;
       }
+      @keyframes ctaGlow {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        100% {
+          transform: translate(-50%, -50%) scale(1.2);
+        }
+      }
+
       .cta-section h2 {
         font-family: "Syne", sans-serif;
         font-size: clamp(36px, 5vw, 64px);
@@ -1042,52 +1489,57 @@
         justify-content: center;
         flex-wrap: wrap;
       }
+
       .cta-phone-btn {
         display: flex;
         align-items: center;
         gap: 14px;
         padding: 18px 36px;
-        border-radius: 14px;
+        border-radius: 16px;
         text-decoration: none;
         transition: all 0.3s ease;
         font-size: 16px;
         font-weight: 700;
       }
       .cta-phone-btn.primary {
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        color: var(--night);
-        box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
+        box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
       }
       .cta-phone-btn.secondary {
-        background: transparent;
+        background: rgba(255, 255, 255, 0.06);
         color: var(--text);
-        border: 1px solid var(--card-border);
+        border: 1px solid rgba(255, 255, 255, 0.15);
       }
       .cta-phone-btn:hover {
         transform: translateY(-4px);
       }
       .cta-phone-btn.primary:hover {
-        box-shadow: 0 16px 40px rgba(201, 168, 76, 0.5);
+        box-shadow: 0 16px 50px rgba(124, 58, 237, 0.6);
       }
       .cta-phone-btn i {
         font-size: 20px;
       }
+
       .cta-offices {
         margin-top: 60px;
         padding-top: 40px;
-        border-top: 1px solid var(--card-border);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
         color: var(--muted);
         font-size: 15px;
         letter-spacing: 0.3px;
       }
       .cta-offices strong {
-        color: var(--gold);
+        background: linear-gradient(135deg, var(--violet-light), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       /* ── FOOTER ── */
       footer {
-        background: var(--night2);
-        border-top: 1px solid var(--card-border);
+        background: #0a0818;
+        border-top: 1px solid rgba(124, 58, 237, 0.2);
         padding: 30px 60px;
         display: flex;
         align-items: center;
@@ -1119,12 +1571,12 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       }
       .float-phone {
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        color: var(--night);
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
       }
       .float-whatsapp {
         background: #25d366;
-        color: white;
+        color: #fff;
       }
       .float-btn:hover {
         transform: scale(1.15) rotate(-5deg);
@@ -1138,8 +1590,8 @@
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.07);
-        border: 1px solid var(--card-border);
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.3);
         color: var(--text);
         font-size: 16px;
         cursor: pointer;
@@ -1156,9 +1608,9 @@
         pointer-events: all;
       }
       #scrollTop:hover {
-        background: var(--gold);
-        color: var(--night);
-        border-color: var(--gold);
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
+        border-color: var(--violet);
       }
 
       /* ── ANIMATIONS ── */
@@ -1186,7 +1638,9 @@
       .reveal {
         opacity: 0;
         transform: translateY(40px);
-        transition: opacity 0.7s ease, transform 0.7s ease;
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
       }
       .reveal.visible {
         opacity: 1;
@@ -1201,18 +1655,61 @@
       .reveal-delay-3 {
         transition-delay: 0.3s;
       }
-      .reveal-delay-4 {
-        transition-delay: 0.4s;
-      }
 
-      /* ── HAMBURGER ── */
-      .hamburger {
+      /* ── CITY AUTOCOMPLETE ── */
+      .city-dropdown {
         display: none;
-        background: none;
-        border: none;
-        color: var(--text);
-        font-size: 22px;
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        right: 0;
+        background: #1a1030;
+        border: 1px solid rgba(124, 58, 237, 0.3);
+        border-radius: 14px;
+        max-height: 220px;
+        overflow-y: auto;
+        z-index: 9999;
+        box-shadow: 0 16px 50px rgba(0, 0, 0, 0.7);
+        scrollbar-width: thin;
+        scrollbar-color: var(--violet) transparent;
+      }
+      .city-dropdown.open {
+        display: block;
+      }
+      .city-dropdown-item {
+        padding: 11px 16px;
+        font-size: 14px;
         cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--text);
+        transition: background 0.15s;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .city-dropdown-item:last-child {
+        border-bottom: none;
+      }
+      .city-dropdown-item:hover,
+      .city-dropdown-item.active {
+        background: rgba(124, 58, 237, 0.15);
+        color: var(--violet-light);
+      }
+      .city-dropdown-item i {
+        color: var(--violet-light);
+        font-size: 12px;
+        flex-shrink: 0;
+      }
+      .city-dropdown-item .city-state {
+        font-size: 11px;
+        color: var(--muted);
+        margin-left: auto;
+      }
+      .city-dropdown-empty {
+        padding: 14px 16px;
+        font-size: 13px;
+        color: var(--muted);
+        text-align: center;
       }
 
       @media (max-width: 900px) {
@@ -1279,29 +1776,35 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-eyebrow">
-        <i class="fas fa-circle"></i> Serving North India since 2008
+        <i class="fas fa-circle" style="font-size: 8px"></i> Serving North India
+        since 2008
       </div>
       <h1>
-        Travel in <span class="gold-word">Comfort</span><br />Arrive in Style
+        Travel in <span class="g1">Comfort</span><br />Arrive in
+        <span class="g2">Style</span>
       </h1>
       <p class="hero-sub">
-        Premium cab service from Chandigarh. Airport pickups, outstation trips,
-        hill station tours — anytime, anywhere.
+        Premium cab service from Chandigarh to Amritsar, Manali, Shimla, Delhi
+        and nearby cities.
+        <strong
+          >Choose your route, compare vehicles, and book a clean, GPS-tracked
+          ride with clear fares and fast support.</strong
+        >
       </p>
 
       <div class="hero-stats">
         <div class="stat-item">
-          <div class="stat-num" data-target="10000">0</div>
+          <div class="stat-num s1" data-target="10000">0</div>
           <div class="stat-label">Happy Riders</div>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <div class="stat-num">4.9★</div>
+          <div class="stat-num s2">4.9★</div>
           <div class="stat-label">Google Rating</div>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-item">
-          <div class="stat-num">16+</div>
+          <div class="stat-num s3">16+</div>
           <div class="stat-label">Years Active</div>
         </div>
       </div>
@@ -1317,29 +1820,101 @@
         </div>
         <div class="widget-body" id="oneway-tab">
           <div class="widget-row">
-            <div class="widget-field">
-              <i class="fas fa-map-marker-alt"></i>
-              <select id="w-from">
-                <option>Chandigarh</option>
-                <option>Mohali</option>
-                <option>Panchkula</option>
-                <option>Delhi</option>
-                <option>Delhi Airport</option>
-                <option>Shimla</option>
-              </select>
+            <div
+              class="widget-field"
+              style="
+                position: relative;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: 10px 14px;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  width: 100%;
+                "
+              >
+                <i
+                  class="fas fa-map-marker-alt"
+                  style="
+                    color: var(--violet-light);
+                    font-size: 14px;
+                    flex-shrink: 0;
+                  "
+                ></i>
+                <input
+                  type="text"
+                  id="w-from"
+                  placeholder="From — city or area"
+                  autocomplete="off"
+                  style="
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    color: var(--text);
+                    font-family: Inter, sans-serif;
+                    font-size: 15px;
+                    font-weight: 500;
+                    width: 100%;
+                  "
+                  oninput="filterCities('w-from', 'from-drop')"
+                  onfocus="showDrop('from-drop')"
+                  onblur="hideDrop('from-drop')"
+                />
+              </div>
+              <div id="from-drop" class="city-dropdown"></div>
             </div>
-            <div class="widget-field">
-              <i class="fas fa-location-dot"></i>
-              <select id="w-to">
-                <option>Ludhiana</option>
-                <option>Amritsar</option>
-                <option>Dehradun</option>
-                <option>Dharamshala</option>
-                <option>Manali</option>
-                <option>Shimla</option>
-                <option>Delhi</option>
-                <option>Delhi Airport</option>
-              </select>
+            <div
+              class="widget-field"
+              style="
+                position: relative;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                padding: 10px 14px;
+              "
+            >
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  gap: 8px;
+                  width: 100%;
+                "
+              >
+                <i
+                  class="fas fa-location-dot"
+                  style="
+                    color: var(--pink-light);
+                    font-size: 14px;
+                    flex-shrink: 0;
+                  "
+                ></i>
+                <input
+                  type="text"
+                  id="w-to"
+                  placeholder="To — city or area"
+                  autocomplete="off"
+                  style="
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    color: var(--text);
+                    font-family: Inter, sans-serif;
+                    font-size: 15px;
+                    font-weight: 500;
+                    width: 100%;
+                  "
+                  oninput="filterCities('w-to', 'to-drop')"
+                  onfocus="showDrop('to-drop')"
+                  onblur="hideDrop('to-drop')"
+                />
+              </div>
+              <div id="to-drop" class="city-dropdown"></div>
             </div>
           </div>
           <button class="widget-search-btn" onclick="searchCabs()">
@@ -1360,6 +1935,63 @@
           >
             Explore our North India tour packages
           </p>
+          <div class="package-results">
+            <a
+              href="oneway/taxi-service/chandigarh-to-manali.html"
+              class="package-card"
+              aria-label="Himachal Hills Express package"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=500&h=280&fit=crop"
+                alt="Manali tour package"
+              />
+              <div class="package-card-body">
+                <div class="package-card-title">Himachal Hills Express</div>
+                <div class="package-card-meta">
+                  <span><i class="fas fa-route"></i> Chandigarh to Manali</span
+                  ><span>4D / 3N</span>
+                </div>
+              </div>
+            </a>
+            <a
+              href="oneway/taxi-service/chandigarh-to-shimla.html"
+              class="package-card"
+              aria-label="Shimla Retreat package"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=500&h=280&fit=crop"
+                alt="Shimla tour package"
+              />
+              <div class="package-card-body">
+                <div class="package-card-title">Shimla Retreat</div>
+                <div class="package-card-meta">
+                  <span><i class="fas fa-route"></i> Chandigarh to Shimla</span
+                  ><span>3D / 2N</span>
+                </div>
+              </div>
+            </a>
+            <a
+              href="oneway/taxi-service/chandigarh-to-amritsar.html"
+              class="package-card"
+              aria-label="Golden Temple Weekend package"
+            >
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=500&h=280&fit=crop"
+                alt="Amritsar tour package"
+              />
+              <div class="package-card-body">
+                <div class="package-card-title">Golden Temple Weekend</div>
+                <div class="package-card-meta">
+                  <span
+                    ><i class="fas fa-route"></i> Chandigarh to Amritsar</span
+                  ><span>2D / 1N</span>
+                </div>
+              </div>
+            </a>
+          </div>
           <a
             href="#routes"
             class="widget-search-btn"
@@ -1376,132 +2008,255 @@
       </div>
     </section>
 
+    <section class="how-section" id="how-it-works">
+      <div class="section-header reveal">
+        <div class="section-eyebrow ey-emerald">How it works</div>
+        <h2>Book your ride in four simple steps</h2>
+        <p>
+          From selecting pickup points to confirming your vehicle, every ride is
+          designed to be easy, transparent and reliable.
+        </p>
+      </div>
+      <div class="how-grid">
+        <div class="step-card reveal">
+          <div class="step-number">1</div>
+          <h3>Select pickup and drop</h3>
+          <p>
+            Start with city search across Chandigarh, Punjab, Himalayan
+            destinations and Delhi-area locations.
+          </p>
+        </div>
+        <div class="step-card reveal reveal-delay-1">
+          <div class="step-number">2</div>
+          <h3>Compare vehicles</h3>
+          <p>
+            Pick the right car for your group, luggage and comfort needs from
+            sedans, SUVs and premium options.
+          </p>
+        </div>
+        <div class="step-card reveal reveal-delay-2">
+          <div class="step-number">3</div>
+          <h3>Confirm your booking</h3>
+          <p>
+            Enter your details, choose a pickup time, and receive a quick
+            booking confirmation from our team.
+          </p>
+        </div>
+        <div class="step-card reveal reveal-delay-3">
+          <div class="step-number">4</div>
+          <h3>Travel with confidence</h3>
+          <p>
+            Ride in sanitized cars with GPS tracking, verified drivers and 24/7
+            customer support.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ROUTES -->
     <section class="routes-section" id="routes">
       <div class="section-header reveal">
-        <div class="section-eyebrow">Popular Routes</div>
+        <div class="section-eyebrow ey-violet">Popular Routes</div>
         <h2>Where do you want to go?</h2>
         <p>One-way & round trips across North India</p>
       </div>
       <div class="routes-grid">
-        <a href="#" class="route-card reveal">
+        <a
+          href="oneway/taxi-service/chandigarh-to-ludhiana.html"
+          class="route-card reveal"
+          aria-label="Book Chandigarh to Ludhiana route"
+        >
           <div class="route-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1569017388730-2bd34224ea84?w=500&h=300&fit=crop"
-              alt="Ludhiana"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=500&h=300&fit=crop"
+              alt="Chandigarh to Ludhiana route"
             />
-            <div class="route-badge">100 km</div>
+            <div class="route-badge b1">100 km</div>
           </div>
           <div class="route-info">
             <div class="route-path">
               Chandigarh <i class="fas fa-arrow-right"></i> Ludhiana
             </div>
-            <div class="route-price">₹2,000 <span>onwards</span></div>
           </div>
         </a>
-        <a href="#" class="route-card reveal reveal-delay-1">
+
+        <a
+          href="oneway/taxi-service/chandigarh-to-amritsar.html"
+          class="route-card reveal reveal-delay-1"
+          aria-label="Book Chandigarh to Amritsar route"
+        >
           <div class="route-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?w=500&h=300&fit=crop"
-              alt="Amritsar"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=500&h=300&fit=crop"
+              alt="Chandigarh to Amritsar route"
             />
-            <div class="route-badge">230 km</div>
+            <div class="route-badge b2">230 km</div>
           </div>
           <div class="route-info">
             <div class="route-path">
               Chandigarh <i class="fas fa-arrow-right"></i> Amritsar
             </div>
-            <div class="route-price">₹3,800 <span>onwards</span></div>
           </div>
         </a>
-        <a href="#" class="route-card reveal reveal-delay-2">
+
+        <a
+          href="oneway/taxi-service/chandigarh-to-dehradun.html"
+          class="route-card reveal reveal-delay-2"
+          aria-label="Book Chandigarh to Dehradun route"
+        >
           <div class="route-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1606016159991-dfe4f2746ad7?w=500&h=300&fit=crop"
-              alt="Dehradun"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop"
+              alt="Chandigarh to Dehradun route"
             />
-            <div class="route-badge">180 km</div>
+            <div class="route-badge b3">180 km</div>
           </div>
           <div class="route-info">
             <div class="route-path">
               Chandigarh <i class="fas fa-arrow-right"></i> Dehradun
             </div>
-            <div class="route-price">₹3,300 <span>onwards</span></div>
           </div>
         </a>
-        <a href="#" class="route-card reveal">
+
+        <a
+          href="oneway/taxi-service/chandigarh-to-dharamshala.html"
+          class="route-card reveal"
+          aria-label="Book Chandigarh to Dharamshala route"
+        >
           <div class="route-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1553675297-03be173e434f?w=500&h=300&fit=crop"
-              alt="Dharamshala"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop"
+              alt="Chandigarh to Dharamshala route"
             />
-            <div class="route-badge">230 km</div>
+            <div class="route-badge b4">230 km</div>
           </div>
           <div class="route-info">
             <div class="route-path">
               Chandigarh <i class="fas fa-arrow-right"></i> Dharamshala
             </div>
-            <div class="route-price">₹4,500 <span>onwards</span></div>
           </div>
         </a>
-        <a href="#" class="route-card reveal reveal-delay-1">
+
+        <a
+          href="oneway/taxi-service/chandigarh-to-manali.html"
+          class="route-card reveal reveal-delay-1"
+          aria-label="Book Chandigarh to Manali route"
+        >
           <div class="route-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=500&h=300&fit=crop"
-              alt="Manali"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop"
+              alt="Chandigarh to Manali route"
             />
-            <div class="route-badge">300 km</div>
+            <div class="route-badge b5">300 km</div>
           </div>
           <div class="route-info">
             <div class="route-path">
               Chandigarh <i class="fas fa-arrow-right"></i> Manali
             </div>
-            <div class="route-price">₹4,800 <span>onwards</span></div>
           </div>
         </a>
-        <a href="#" class="route-card reveal reveal-delay-2">
+
+        <a
+          href="oneway/taxi-service/chandigarh-to-delhi.html"
+          class="route-card reveal reveal-delay-2"
+          aria-label="Book Chandigarh to Delhi route"
+        >
           <div class="route-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=500&h=300&fit=crop"
-              alt="Delhi"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=500&h=300&fit=crop"
+              alt="Chandigarh to Delhi route"
             />
-            <div class="route-badge">250 km</div>
+            <div class="route-badge b6">250 km</div>
           </div>
           <div class="route-info">
             <div class="route-path">
               Chandigarh <i class="fas fa-arrow-right"></i> Delhi
             </div>
-            <div class="route-price">₹3,300 <span>onwards</span></div>
           </div>
         </a>
-        <a href="#" class="route-card reveal">
+
+        <a
+          href="oneway/taxi-service/shimla-to-delhi.html"
+          class="route-card reveal"
+          aria-label="Book Shimla to Delhi route"
+        >
           <div class="route-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=500&h=300&fit=crop"
-              alt="Shimla"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=300&fit=crop"
+              alt="Shimla to Delhi route"
             />
-            <div class="route-badge">110 km</div>
+            <div class="route-badge b1">365 km</div>
           </div>
           <div class="route-info">
             <div class="route-path">
               Shimla <i class="fas fa-arrow-right"></i> Delhi
             </div>
-            <div class="route-price">₹5,500 <span>onwards</span></div>
           </div>
         </a>
-        <a href="#" class="route-card reveal reveal-delay-1">
+
+        <a
+          href="oneway/taxi-service/delhi-to-manali.html"
+          class="route-card reveal reveal-delay-1"
+          aria-label="Book Delhi to Manali route"
+        >
           <div class="route-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1524413740807-0c3cb6fa808d?w=500&h=300&fit=crop"
-              alt="Delhi Manali"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop"
+              alt="Delhi to Manali route"
             />
-            <div class="route-badge">540 km</div>
+            <div class="route-badge b2">540 km</div>
           </div>
           <div class="route-info">
             <div class="route-path">
               Delhi <i class="fas fa-arrow-right"></i> Manali
             </div>
-            <div class="route-price">₹7,400 <span>onwards</span></div>
+          </div>
+        </a>
+
+        <a
+          href="oneway/taxi-service/chandigarh-to-ambala.html"
+          class="route-card reveal reveal-delay-2"
+          aria-label="Book Chandigarh to Ambala route"
+        >
+          <div class="route-img-wrap">
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&h=300&fit=crop"
+              alt="Chandigarh to Ambala route"
+            />
+            <div class="route-badge b3">48 km</div>
+          </div>
+          <div class="route-info">
+            <div class="route-path">
+              Chandigarh <i class="fas fa-arrow-right"></i> Ambala
+            </div>
+          </div>
+        </a>
+
+        <a
+          href="oneway/taxi-service/chandigarh-to-shimla.html"
+          class="route-card reveal reveal-delay-1"
+        >
+          <div class="route-img-wrap">
+            <img
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&h=300&fit=crop"
+              alt="Chandigarh to Shimla scenic route"
+            />
+            <div class="route-badge b1">110 km</div>
+          </div>
+          <div class="route-info">
+            <div class="route-path">
+              Chandigarh <i class="fas fa-arrow-right"></i> Shimla
+            </div>
           </div>
         </a>
       </div>
@@ -1510,7 +2265,7 @@
     <!-- FLEET -->
     <section class="fleet-section" id="fleet">
       <div class="section-header reveal">
-        <div class="section-eyebrow">Our Fleet</div>
+        <div class="section-eyebrow ey-cyan">Our Fleet</div>
         <h2>Every car, perfectly maintained</h2>
         <p>Sedans to SUVs — GPS-enabled, fully insured, sanitized daily</p>
       </div>
@@ -1519,16 +2274,17 @@
           <div class="fleet-type-badge">Sedan</div>
           <div class="fleet-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=400&h=250&fit=crop"
-              alt="Maruti Dzire"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=400&h=250&fit=crop"
+              alt="Maruti Dzire in fleet"
             />
           </div>
           <div class="fleet-body">
             <h4>Maruti Dzire</h4>
             <div class="fleet-meta">
-              <span><i class="fas fa-user"></i> 4 Seats</span>
-              <span><i class="fas fa-suitcase"></i> 4 Bags</span>
-              <span><i class="fas fa-gas-pump"></i> CNG/Petrol</span>
+              <span><i class="fas fa-user"></i> 4 Seats</span
+              ><span><i class="fas fa-suitcase"></i> 4 Bags</span
+              ><span><i class="fas fa-gas-pump"></i> CNG/Petrol</span>
             </div>
           </div>
         </div>
@@ -1536,16 +2292,17 @@
           <div class="fleet-type-badge">Sedan</div>
           <div class="fleet-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=400&h=250&fit=crop"
-              alt="Toyota Etios"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1517849845537-4d257902454a?w=400&h=250&fit=crop"
+              alt="Toyota Etios in fleet"
             />
           </div>
           <div class="fleet-body">
             <h4>Toyota Etios</h4>
             <div class="fleet-meta">
-              <span><i class="fas fa-user"></i> 4 Seats</span>
-              <span><i class="fas fa-suitcase"></i> 4 Bags</span>
-              <span><i class="fas fa-gas-pump"></i> Diesel</span>
+              <span><i class="fas fa-user"></i> 4 Seats</span
+              ><span><i class="fas fa-suitcase"></i> 4 Bags</span
+              ><span><i class="fas fa-gas-pump"></i> Diesel</span>
             </div>
           </div>
         </div>
@@ -1553,16 +2310,17 @@
           <div class="fleet-type-badge">MUV</div>
           <div class="fleet-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1606016159991-dfe4f2746ad7?w=400&h=250&fit=crop"
-              alt="Ertiga"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1541447273111-4bc0d25e6d7e?w=400&h=250&fit=crop"
+              alt="Maruti Ertiga in fleet"
             />
           </div>
           <div class="fleet-body">
             <h4>Maruti Ertiga</h4>
             <div class="fleet-meta">
-              <span><i class="fas fa-user"></i> 6 Seats</span>
-              <span><i class="fas fa-suitcase"></i> 6 Bags</span>
-              <span><i class="fas fa-gas-pump"></i> CNG</span>
+              <span><i class="fas fa-user"></i> 6 Seats</span
+              ><span><i class="fas fa-suitcase"></i> 6 Bags</span
+              ><span><i class="fas fa-gas-pump"></i> CNG</span>
             </div>
           </div>
         </div>
@@ -1570,16 +2328,17 @@
           <div class="fleet-type-badge">SUV</div>
           <div class="fleet-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=400&h=250&fit=crop"
-              alt="Innova"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=250&fit=crop"
+              alt="Toyota Innova in fleet"
             />
           </div>
           <div class="fleet-body">
             <h4>Toyota Innova</h4>
             <div class="fleet-meta">
-              <span><i class="fas fa-user"></i> 7 Seats</span>
-              <span><i class="fas fa-suitcase"></i> 6 Bags</span>
-              <span><i class="fas fa-gas-pump"></i> Diesel</span>
+              <span><i class="fas fa-user"></i> 7 Seats</span
+              ><span><i class="fas fa-suitcase"></i> 6 Bags</span
+              ><span><i class="fas fa-gas-pump"></i> Diesel</span>
             </div>
           </div>
         </div>
@@ -1587,16 +2346,17 @@
           <div class="fleet-type-badge">Premium</div>
           <div class="fleet-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1621007947382-bb3c39e41fb3?w=400&h=250&fit=crop"
-              alt="Innova Crysta"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1496259514074-756f4b2c40be?w=400&h=250&fit=crop"
+              alt="Innova Crysta in fleet"
             />
           </div>
           <div class="fleet-body">
             <h4>Innova Crysta</h4>
             <div class="fleet-meta">
-              <span><i class="fas fa-user"></i> 7 Seats</span>
-              <span><i class="fas fa-suitcase"></i> 6 Bags</span>
-              <span><i class="fas fa-gas-pump"></i> Diesel</span>
+              <span><i class="fas fa-user"></i> 7 Seats</span
+              ><span><i class="fas fa-suitcase"></i> 6 Bags</span
+              ><span><i class="fas fa-gas-pump"></i> Diesel</span>
             </div>
           </div>
         </div>
@@ -1604,16 +2364,17 @@
           <div class="fleet-type-badge">Luxury</div>
           <div class="fleet-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1519646939016-5f90a2e8a6ed?w=400&h=250&fit=crop"
-              alt="Fortuner"
+              loading="lazy"
+              src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=400&h=250&fit=crop"
+              alt="Toyota Fortuner in fleet"
             />
           </div>
           <div class="fleet-body">
             <h4>Toyota Fortuner</h4>
             <div class="fleet-meta">
-              <span><i class="fas fa-user"></i> 7 Seats</span>
-              <span><i class="fas fa-suitcase"></i> 3 Bags</span>
-              <span><i class="fas fa-gas-pump"></i> Diesel</span>
+              <span><i class="fas fa-user"></i> 7 Seats</span
+              ><span><i class="fas fa-suitcase"></i> 3 Bags</span
+              ><span><i class="fas fa-gas-pump"></i> Diesel</span>
             </div>
           </div>
         </div>
@@ -1623,7 +2384,7 @@
     <!-- WHY -->
     <section class="why-section" id="why">
       <div class="section-header reveal">
-        <div class="section-eyebrow">Why KDM</div>
+        <div class="section-eyebrow ey-emerald">Why KDM</div>
         <h2>Trusted by 10,000+ riders</h2>
       </div>
       <div class="why-grid">
@@ -1681,7 +2442,7 @@
     <!-- REVIEWS -->
     <section class="reviews-section" id="reviews">
       <div class="section-header reveal">
-        <div class="section-eyebrow">Reviews</div>
+        <div class="section-eyebrow ey-orange">Reviews</div>
         <h2>What our riders say</h2>
       </div>
       <div class="reviews-rating reveal">
@@ -1692,63 +2453,67 @@
         </div>
       </div>
       <div class="reviews-track-wrap">
-        <div class="reviews-track" id="reviews-track">
-          <!-- reviews injected by JS, duplicated for infinite scroll -->
-        </div>
+        <div class="reviews-track" id="reviews-track"></div>
       </div>
     </section>
 
     <!-- CITIES -->
     <section class="cities-section" id="cities">
       <div class="section-header reveal">
-        <div class="section-eyebrow">Locations</div>
+        <div class="section-eyebrow ey-pink">Locations</div>
         <h2>Hire a cab from any city</h2>
       </div>
       <div class="cities-grid">
         <div class="city-card reveal">
           <img
-            src="https://images.unsplash.com/photo-1514222134-b57cbb8ce073?w=400&h=300&fit=crop"
-            alt="Amritsar"
+            loading="lazy"
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&h=300&fit=crop"
+            alt="Amritsar city view"
           />
           <div class="city-overlay"></div>
           <div class="city-label"><span>Taxi Service</span>Amritsar</div>
         </div>
         <div class="city-card reveal reveal-delay-1">
           <img
-            src="https://images.unsplash.com/photo-1569017388730-2bd34224ea84?w=400&h=300&fit=crop"
-            alt="Chandigarh"
+            loading="lazy"
+            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&h=300&fit=crop"
+            alt="Chandigarh city view"
           />
           <div class="city-overlay"></div>
           <div class="city-label"><span>Taxi Service</span>Chandigarh</div>
         </div>
         <div class="city-card reveal reveal-delay-2">
           <img
-            src="https://images.unsplash.com/photo-1524413740807-0c3cb6fa808d?w=400&h=300&fit=crop"
-            alt="Delhi"
+            loading="lazy"
+            src="https://images.unsplash.com/photo-1483721310020-03333e577078?w=400&h=300&fit=crop"
+            alt="New Delhi skyline"
           />
           <div class="city-overlay"></div>
           <div class="city-label"><span>Taxi Service</span>Delhi</div>
         </div>
         <div class="city-card reveal">
           <img
-            src="https://images.unsplash.com/photo-1553675297-03be173e434f?w=400&h=300&fit=crop"
-            alt="Manali"
+            loading="lazy"
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&h=300&fit=crop"
+            alt="Manali mountain valley"
           />
           <div class="city-overlay"></div>
           <div class="city-label"><span>Taxi Service</span>Manali</div>
         </div>
         <div class="city-card reveal reveal-delay-1">
           <img
-            src="https://images.unsplash.com/photo-1564507592333-c60657eea523?w=400&h=300&fit=crop"
-            alt="Shimla"
+            loading="lazy"
+            src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=400&h=300&fit=crop"
+            alt="Shimla hill station"
           />
           <div class="city-overlay"></div>
           <div class="city-label"><span>Taxi Service</span>Shimla</div>
         </div>
         <div class="city-card reveal reveal-delay-2">
           <img
-            src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=400&h=300&fit=crop"
-            alt="Delhi Airport"
+            loading="lazy"
+            src="https://images.unsplash.com/photo-1473986901512-36070a70d3d5?w=400&h=300&fit=crop"
+            alt="Delhi Airport terminal"
           />
           <div class="city-overlay"></div>
           <div class="city-label"><span>Taxi Service</span>Delhi Airport</div>
@@ -1758,11 +2523,16 @@
 
     <!-- CTA -->
     <section class="cta-section" id="contact">
-      <div class="section-eyebrow reveal">Get in Touch</div>
+      <div class="section-eyebrow ey-violet reveal">Get in Touch</div>
       <h2 class="reveal">
         Ready to ride?<br /><span
           style="
-            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            background: linear-gradient(
+              135deg,
+              var(--violet-light),
+              var(--pink),
+              var(--orange)
+            );
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -1774,12 +2544,12 @@
         Call us directly or WhatsApp — we'll confirm your booking in minutes.
       </p>
       <div class="cta-phones reveal">
-        <a href="tel:+919803384033" class="cta-phone-btn primary">
-          <i class="fas fa-phone"></i> +91 98033 84033
-        </a>
-        <a href="tel:+919041194411" class="cta-phone-btn secondary">
-          <i class="fas fa-phone"></i> +91 90411 94411
-        </a>
+        <a href="tel:+919803384033" class="cta-phone-btn primary"
+          ><i class="fas fa-phone"></i> +91 98033 84033</a
+        >
+        <a href="tel:+919041194411" class="cta-phone-btn secondary"
+          ><i class="fas fa-phone"></i> +91 90411 94411</a
+        >
       </div>
       <div class="cta-offices reveal">
         <strong>Offices:</strong> Chandigarh · Mohali · Panchkula · Delhi ·
@@ -1817,35 +2587,36 @@
         ><i class="fab fa-whatsapp"></i
       ></a>
     </div>
-
     <button id="scrollTop"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-      // ── CURSOR GLOW
+      // cursor glow
       const glow = document.getElementById("cursor-glow");
       document.addEventListener("mousemove", (e) => {
         glow.style.left = e.clientX + "px";
         glow.style.top = e.clientY + "px";
       });
 
-      // ── PARTICLES
+      // particles — multi-color
+      const pColors = [
+        "#7c3aed",
+        "#ec4899",
+        "#06b6d4",
+        "#10b981",
+        "#f97316",
+        "#eab308",
+      ];
       const container = document.getElementById("particles");
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 35; i++) {
         const p = document.createElement("div");
         p.className = "particle";
         const size = Math.random() * 3 + 1;
-        p.style.cssText = `
-    width:${size}px;height:${size}px;
-    left:${Math.random() * 100}%;
-    bottom:${Math.random() * 20}%;
-    animation-duration:${Math.random() * 15 + 10}s;
-    animation-delay:${Math.random() * 10}s;
-    opacity:${Math.random() * 0.4 + 0.1};
-  `;
+        const col = pColors[Math.floor(Math.random() * pColors.length)];
+        p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random() * 100}%;bottom:${Math.random() * 20}%;animation-duration:${Math.random() * 15 + 10}s;animation-delay:${Math.random() * 10}s;background:${col}`;
         container.appendChild(p);
       }
 
-      // ── NAV SCROLL
+      // nav scroll
       const nav = document.getElementById("nav");
       window.addEventListener("scroll", () => {
         nav.classList.toggle("scrolled", window.scrollY > 60);
@@ -1856,44 +2627,124 @@
       document
         .getElementById("scrollTop")
         .addEventListener("click", () =>
-          window.scrollTo({ top: 0, behavior: "smooth" })
+          window.scrollTo({ top: 0, behavior: "smooth" }),
         );
 
-      // ── REVEAL ON SCROLL
-      const observer = new IntersectionObserver(
-        (entries) => {
+      // reveal
+      const obs = new IntersectionObserver(
+        (entries) =>
           entries.forEach((e) => {
             if (e.isIntersecting) e.target.classList.add("visible");
-          });
-        },
-        { threshold: 0.12 }
+          }),
+        { threshold: 0.12 },
       );
-      document
-        .querySelectorAll(".reveal")
-        .forEach((el) => observer.observe(el));
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
 
-      // ── COUNTER ANIMATION
+      // counter
       const counter = document.querySelector("[data-target]");
-      const counterObserver = new IntersectionObserver((entries) => {
+      const cObs = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
           animateCount(counter, 0, 10000, 1800);
-          counterObserver.disconnect();
+          cObs.disconnect();
         }
       });
-      if (counter) counterObserver.observe(counter);
+      if (counter) cObs.observe(counter);
       function animateCount(el, start, end, dur) {
         const step = (end - start) / (dur / 16);
         let current = start;
-        const timer = setInterval(() => {
+        const t = setInterval(() => {
           current += step;
           if (current >= end) {
             el.textContent = end.toLocaleString() + "+";
-            clearInterval(timer);
+            clearInterval(t);
           } else el.textContent = Math.floor(current).toLocaleString() + "+";
         }, 16);
       }
 
-      // ── WIDGET
+      // cities data
+      const allCities = [
+        { n: "Chandigarh", s: "Chandigarh" },
+        { n: "Mohali", s: "Punjab" },
+        { n: "Panchkula", s: "Haryana" },
+        { n: "Ludhiana", s: "Punjab" },
+        { n: "Amritsar", s: "Punjab" },
+        { n: "Jalandhar", s: "Punjab" },
+        { n: "Patiala", s: "Punjab" },
+        { n: "Bathinda", s: "Punjab" },
+        { n: "Pathankot", s: "Punjab" },
+        { n: "Moga", s: "Punjab" },
+        { n: "Firozpur", s: "Punjab" },
+        { n: "Gurdaspur", s: "Punjab" },
+        { n: "Hoshiarpur", s: "Punjab" },
+        { n: "Ropar", s: "Punjab" },
+        { n: "Sangrur", s: "Punjab" },
+        { n: "Ambala", s: "Haryana" },
+        { n: "Hisar", s: "Haryana" },
+        { n: "Rohtak", s: "Haryana" },
+        { n: "Faridabad", s: "Haryana" },
+        { n: "Gurgaon", s: "Haryana" },
+        { n: "Panipat", s: "Haryana" },
+        { n: "Karnal", s: "Haryana" },
+        { n: "Sonipat", s: "Haryana" },
+        { n: "Yamunanagar", s: "Haryana" },
+        { n: "Kurukshetra", s: "Haryana" },
+        { n: "Sirsa", s: "Haryana" },
+        { n: "Bhiwani", s: "Haryana" },
+        { n: "Shimla", s: "Himachal Pradesh" },
+        { n: "Manali", s: "Himachal Pradesh" },
+        { n: "Dharamshala", s: "Himachal Pradesh" },
+        { n: "Kullu", s: "Himachal Pradesh" },
+        { n: "Mandi", s: "Himachal Pradesh" },
+        { n: "Solan", s: "Himachal Pradesh" },
+        { n: "Kasauli", s: "Himachal Pradesh" },
+        { n: "Dalhousie", s: "Himachal Pradesh" },
+        { n: "Kasol", s: "Himachal Pradesh" },
+        { n: "McLeod Ganj", s: "Himachal Pradesh" },
+        { n: "Delhi", s: "Delhi" },
+        { n: "Delhi Airport (IGI)", s: "Delhi" },
+        { n: "New Delhi", s: "Delhi" },
+        { n: "Noida", s: "Uttar Pradesh" },
+        { n: "Greater Noida", s: "Uttar Pradesh" },
+        { n: "Ghaziabad", s: "Uttar Pradesh" },
+        { n: "Dehradun", s: "Uttarakhand" },
+        { n: "Haridwar", s: "Uttarakhand" },
+        { n: "Rishikesh", s: "Uttarakhand" },
+        { n: "Mussoorie", s: "Uttarakhand" },
+        { n: "Nainital", s: "Uttarakhand" },
+        { n: "Badrinath", s: "Uttarakhand" },
+        { n: "Kedarnath", s: "Uttarakhand" },
+        { n: "Jim Corbett", s: "Uttarakhand" },
+        { n: "Jaipur", s: "Rajasthan" },
+        { n: "Jodhpur", s: "Rajasthan" },
+        { n: "Udaipur", s: "Rajasthan" },
+        { n: "Ajmer", s: "Rajasthan" },
+        { n: "Pushkar", s: "Rajasthan" },
+        { n: "Mount Abu", s: "Rajasthan" },
+        { n: "Agra", s: "Uttar Pradesh" },
+        { n: "Lucknow", s: "Uttar Pradesh" },
+        { n: "Varanasi", s: "Uttar Pradesh" },
+        { n: "Mathura", s: "Uttar Pradesh" },
+        { n: "Jammu", s: "J&K" },
+        { n: "Srinagar", s: "J&K" },
+        { n: "Katra", s: "J&K" },
+        { n: "Leh", s: "Ladakh" },
+        { n: "Kargil", s: "Ladakh" },
+        { n: "Pahalgam", s: "J&K" },
+        { n: "Gulmarg", s: "J&K" },
+        { n: "Sonamarg", s: "J&K" },
+        { n: "Mumbai", s: "Maharashtra" },
+        { n: "Pune", s: "Maharashtra" },
+        { n: "Ahmedabad", s: "Gujarat" },
+        { n: "Bengaluru", s: "Karnataka" },
+        { n: "Chennai", s: "Tamil Nadu" },
+        { n: "Hyderabad", s: "Telangana" },
+        { n: "Kolkata", s: "West Bengal" },
+        { n: "Bhopal", s: "Madhya Pradesh" },
+        { n: "Indore", s: "Madhya Pradesh" },
+        { n: "Chandigarh Airport", s: "Chandigarh" },
+        { n: "Amritsar Airport", s: "Punjab" },
+      ];
+
       const distances = {
         "Chandigarh-Ludhiana": 100,
         "Chandigarh-Amritsar": 230,
@@ -1902,43 +2753,110 @@
         "Chandigarh-Manali": 300,
         "Chandigarh-Shimla": 110,
         "Chandigarh-Delhi": 250,
-        "Chandigarh-Delhi Airport": 240,
+        "Chandigarh-Delhi Airport (IGI)": 240,
         "Delhi-Manali": 540,
         "Shimla-Delhi": 340,
         "Mohali-Delhi": 255,
         "Panchkula-Delhi": 248,
         "Chandigarh-Ambala": 48,
+        "Chandigarh-Patiala": 65,
+        "Chandigarh-Pathankot": 170,
+        "Chandigarh-Jammu": 280,
+        "Chandigarh-Katra": 310,
+        "Chandigarh-Srinagar": 640,
+        "Chandigarh-Leh": 900,
+        "Chandigarh-Haridwar": 200,
+        "Chandigarh-Rishikesh": 220,
+        "Chandigarh-Mussoorie": 240,
+        "Chandigarh-Nainital": 320,
+        "Chandigarh-Agra": 460,
+        "Chandigarh-Jaipur": 520,
+        "Delhi-Agra": 200,
+        "Delhi-Jaipur": 270,
+        "Delhi-Haridwar": 220,
+        "Delhi-Rishikesh": 240,
+        "Delhi-Mussoorie": 290,
+        "Delhi-Shimla": 365,
+        "Delhi-Dharamshala": 480,
+        "Delhi-Jammu": 580,
+        "Delhi-Katra": 610,
+        "Delhi-Amritsar": 455,
+        "Delhi-Ludhiana": 310,
+        "Amritsar-Jammu": 220,
       };
+
       const cars = [
         {
           name: "Maruti Dzire",
           seats: 4,
           bags: 4,
           rate: 12,
-          img: "https://images.unsplash.com/photo-1609521263047-f8f205293f24?w=200&h=120&fit=crop",
+          img: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=200&h=120&fit=crop",
         },
         {
           name: "Toyota Etios",
           seats: 4,
           bags: 4,
           rate: 14,
-          img: "https://images.unsplash.com/photo-1590362891991-f776e747a588?w=200&h=120&fit=crop",
+          img: "https://images.unsplash.com/photo-1483721310020-03333e577078?w=200&h=120&fit=crop",
         },
         {
           name: "Toyota Innova",
           seats: 7,
           bags: 6,
           rate: 20,
-          img: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=200&h=120&fit=crop",
+          img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=200&h=120&fit=crop",
         },
         {
           name: "Innova Crysta",
           seats: 7,
           bags: 6,
           rate: 24,
-          img: "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=200&h=120&fit=crop",
+          img: "https://images.unsplash.com/photo-1496259514074-756f4b2c40be?w=200&h=120&fit=crop",
         },
       ];
+
+      function filterCities(inputId, dropId) {
+        const val = document.getElementById(inputId).value.trim().toLowerCase();
+        const drop = document.getElementById(dropId);
+        if (!val) {
+          drop.classList.remove("open");
+          return;
+        }
+        const matches = allCities
+          .filter(
+            (c) =>
+              c.n.toLowerCase().includes(val) ||
+              c.s.toLowerCase().includes(val),
+          )
+          .slice(0, 18);
+        if (!matches.length) {
+          drop.innerHTML =
+            '<div class="city-dropdown-empty"><i class="fas fa-search-minus"></i> No cities found</div>';
+        } else {
+          drop.innerHTML = matches
+            .map(
+              (c) =>
+                `<div class="city-dropdown-item" onmousedown="selectCity('${inputId}','${dropId}','${c.n}')"><i class="fas fa-map-marker-alt"></i><span>${c.n}</span><span class="city-state">${c.s}</span></div>`,
+            )
+            .join("");
+        }
+        drop.classList.add("open");
+      }
+      function selectCity(inputId, dropId, name) {
+        document.getElementById(inputId).value = name;
+        document.getElementById(dropId).classList.remove("open");
+      }
+      function showDrop(dropId) {
+        const inputId = dropId === "from-drop" ? "w-from" : "w-to";
+        filterCities(inputId, dropId);
+      }
+      function hideDrop(dropId) {
+        setTimeout(
+          () => document.getElementById(dropId).classList.remove("open"),
+          180,
+        );
+      }
 
       function switchTab(tab, btn) {
         document
@@ -1952,113 +2870,115 @@
       }
 
       function searchCabs() {
-        const from = document.getElementById("w-from").value;
-        const to = document.getElementById("w-to").value;
-        const key1 = `${from}-${to}`,
-          key2 = `${to}-${from}`;
-        const dist = distances[key1] || distances[key2] || 200;
-
+        const from = document.getElementById("w-from").value.trim();
+        const to = document.getElementById("w-to").value.trim();
+        if (!from || !to) {
+          ["w-from", "w-to"].forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el.value.trim()) {
+              el.parentElement.parentElement.style.borderColor = "#f97316";
+              setTimeout(
+                () => (el.parentElement.parentElement.style.borderColor = ""),
+                1200,
+              );
+            }
+          });
+          return;
+        }
+        let dist = 200;
+        for (const [k, v] of Object.entries(distances)) {
+          const parts = k.split("-");
+          if (
+            (parts[0].toLowerCase() === from.toLowerCase() &&
+              parts[1].toLowerCase() === to.toLowerCase()) ||
+            (parts[1].toLowerCase() === from.toLowerCase() &&
+              parts[0].toLowerCase() === to.toLowerCase())
+          ) {
+            dist = v;
+            break;
+          }
+        }
+        const gradients = [
+          "linear-gradient(135deg,#7c3aed,#ec4899)",
+          "linear-gradient(135deg,#06b6d4,#10b981)",
+          "linear-gradient(135deg,#f97316,#eab308)",
+          "linear-gradient(135deg,#ec4899,#f97316)",
+        ];
         const list = document.getElementById("cars-list");
         list.innerHTML = cars
-          .map((c) => {
-            const price = dist * c.rate;
-            const url = `booking-page.html?car=${encodeURIComponent(
-              c.name
-            )}&pickup=${encodeURIComponent(from)}&dropoff=${encodeURIComponent(
-              to
-            )}&price=${price}`;
-            return `
-    <div class="car-item" onclick="window.location.href='${url}'" style="cursor:pointer;" title="Click to book ${
-              c.name
-            }">
-      <img src="${c.img}" alt="${
-              c.name
-            }" onerror="this.src='https://images.unsplash.com/photo-1550355291-bbee04a92027?w=200&h=120&fit=crop'">
-      <div class="car-item-info">
-        <h5>${c.name}</h5>
-        <p><i class="fas fa-user" style="color:var(--gold)"></i> ${
-          c.seats
-        } Seats &nbsp;·&nbsp; <i class="fas fa-suitcase" style="color:var(--gold)"></i> ${
-              c.bags
-            } Bags</p>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;">
-        <div class="car-item-price">₹${price.toLocaleString()}</div>
-        <div style="background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--night);padding:5px 12px;border-radius:6px;font-size:11px;font-weight:800;letter-spacing:0.5px;white-space:nowrap;">
-          BOOK NOW <i class="fas fa-arrow-right" style="font-size:9px;margin-left:3px;"></i>
-        </div>
-      </div>
-    </div>
-  `;
+          .map((c, i) => {
+            const url = `booking-page.html?car=${encodeURIComponent(c.name)}&pickup=${encodeURIComponent(from)}&dropoff=${encodeURIComponent(to)}`;
+            return `<div class="car-item" onclick="window.location.href='${url}'" style="cursor:pointer;">
+            <img loading="lazy" src="${c.img}" alt="${c.name}" onerror="this.src='https://images.unsplash.com/photo-1550355291-bbee04a92027?w=200&h=120&fit=crop'">
+            <div class="car-item-info"><h5>${c.name}</h5><p><i class="fas fa-user" style="color:var(--violet-light)"></i> ${c.seats} Seats &nbsp;·&nbsp; <i class="fas fa-suitcase" style="color:var(--cyan-light)"></i> ${c.bags} Bags</p></div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;">
+              <div style="background:${gradients[i % 4]};color:#fff;padding:5px 12px;border-radius:8px;font-size:11px;font-weight:800;letter-spacing:.5px;white-space:nowrap;box-shadow:0 4px 12px rgba(124,58,237,0.3)">BOOK NOW <i class="fas fa-arrow-right" style="font-size:9px;margin-left:3px"></i></div>
+            </div>
+          </div>`;
           })
           .join("");
-
         const results = document.getElementById("car-results");
         results.style.display = "block";
         setTimeout(
           () =>
             results.scrollIntoView({ behavior: "smooth", block: "nearest" }),
-          100
+          120,
         );
       }
 
-      // ── REVIEWS MARQUEE
+      // reviews
       const reviewsData = [
         {
           init: "A",
           name: "Amandeep K.",
           tag: "Family Trip",
           text: "Booked an Innova for Chandigarh to Manali. Super clean vehicle, polite driver, on-time pickup. Truly premium experience!",
+          grad: "linear-gradient(135deg,#7c3aed,#ec4899)",
         },
         {
           init: "N",
           name: "Neha S.",
           tag: "Wedding",
           text: "Mercedes for our reception was spotless. Smooth coordination and transparent billing with GST invoice. Absolutely loved it.",
+          grad: "linear-gradient(135deg,#ec4899,#f97316)",
         },
         {
           init: "R",
           name: "Rohit V.",
           tag: "Airport Transfer",
           text: "Delhi airport to Mohali in Innova Crysta. Professional driver, water bottles and tissues provided. Five stars!",
+          grad: "linear-gradient(135deg,#06b6d4,#10b981)",
         },
         {
           init: "P",
           name: "Priya M.",
           tag: "Shimla Trip",
           text: "Booked a cab for Shimla and the experience was outstanding. Driver knew all the hill roads perfectly. Highly recommend KDM!",
+          grad: "linear-gradient(135deg,#10b981,#06b6d4)",
         },
         {
           init: "S",
           name: "Sukhwinder G.",
           tag: "Business",
           text: "Use KDM for all my corporate travel between Chandigarh and Delhi. Always on time, always clean. Zero stress travel.",
+          grad: "linear-gradient(135deg,#f97316,#eab308)",
         },
         {
           init: "M",
           name: "Mohan T.",
           tag: "Dharamshala",
           text: "Fantastic trip to Dharamshala. The Crysta handled mountain roads brilliantly and the driver was very knowledgeable about the route.",
+          grad: "linear-gradient(135deg,#eab308,#f97316)",
         },
       ];
 
       function makeReviewCard(r) {
-        return `<div class="review-card">
-    <div class="review-stars">★★★★★</div>
-    <div class="review-text">"${r.text}"</div>
-    <div class="review-author">
-      <div class="review-avatar">${r.init}</div>
-      <div class="review-author-info">
-        <strong>${r.name}</strong>
-        <span>${r.tag}</span>
-      </div>
-    </div>
-  </div>`;
+        return `<div class="review-card"><div class="review-stars">★★★★★</div><div class="review-text">"${r.text}"</div><div class="review-author"><div class="review-avatar" style="background:${r.grad}">${r.init}</div><div class="review-author-info"><strong>${r.name}</strong><span>${r.tag}</span></div></div></div>`;
       }
-
       const track = document.getElementById("reviews-track");
-      const doubled = [...reviewsData, ...reviewsData];
-      track.innerHTML = doubled.map(makeReviewCard).join("");
+      track.innerHTML = [...reviewsData, ...reviewsData]
+        .map(makeReviewCard)
+        .join("");
     </script>
   </body>
 </html>

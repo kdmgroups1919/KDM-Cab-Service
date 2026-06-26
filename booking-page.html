@@ -1,8 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Book your KDM Cab Service ride from Chandigarh to any route with a trusted vehicle, fast support, and a clear booking experience."
+    />
+    <meta property="og:title" content="Book Your Ride — KDM Cab Service" />
+    <meta
+      property="og:description"
+      content="Choose your car, pickup date, and route for a premium cab ride from Chandigarh and nearby cities."
+    />
+    <meta
+      property="og:image"
+      content="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=1200&h=630&fit=crop"
+    />
+    <meta property="og:url" content="http://localhost:8000/booking-page.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Book Your Ride — KDM Cab Service" />
+    <meta
+      name="twitter:description"
+      content="Book a trusted cab ride on your preferred route with KDM Cab Service."
+    />
     <title>Book Your Ride — KDM Cab Service</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"
@@ -22,18 +42,27 @@
       }
 
       :root {
-        --gold: #c9a84c;
-        --gold-light: #e8c97a;
-        --gold-dark: #9a7a32;
-        --night: #0a0a0f;
-        --night2: #111118;
-        --night3: #16161f;
-        --card-bg: rgba(255, 255, 255, 0.035);
-        --card-border: rgba(201, 168, 76, 0.18);
-        --text: #f0ede6;
-        --muted: rgba(240, 237, 230, 0.5);
-        --radius: 16px;
-        --glow: 0 0 40px rgba(201, 168, 76, 0.12);
+        --violet: #7c3aed;
+        --violet-light: #a78bfa;
+        --violet-dark: #5b21b6;
+        --pink: #ec4899;
+        --pink-light: #f9a8d4;
+        --orange: #f97316;
+        --orange-light: #fdba74;
+        --cyan: #06b6d4;
+        --cyan-light: #67e8f9;
+        --emerald: #10b981;
+        --emerald-light: #6ee7b7;
+        --yellow: #eab308;
+        --yellow-light: #fde047;
+        --ink: #0f0a1e;
+        --ink2: #1a1030;
+        --ink3: #221540;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --text: #f5f0ff;
+        --muted: rgba(245, 240, 255, 0.5);
+        --radius: 18px;
       }
 
       html {
@@ -41,10 +70,34 @@
       }
       body {
         font-family: "Inter", sans-serif;
-        background: var(--night);
+        background: var(--ink);
         color: var(--text);
         min-height: 100vh;
         overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            ellipse 60% 50% at 10% 20%,
+            rgba(124, 58, 237, 0.18) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 50% 40% at 90% 10%,
+            rgba(6, 182, 212, 0.12) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 70% 80%,
+            rgba(236, 72, 153, 0.1) 0%,
+            transparent 55%
+          );
       }
 
       /* ── PARTICLES ── */
@@ -58,7 +111,6 @@
       .particle {
         position: absolute;
         border-radius: 50%;
-        background: var(--gold);
         animation: floatP linear infinite;
         opacity: 0;
       }
@@ -68,11 +120,11 @@
           transform: translateY(0) scale(0);
         }
         10% {
-          opacity: 0.5;
+          opacity: 0.6;
           transform: translateY(-20px) scale(1);
         }
         90% {
-          opacity: 0.1;
+          opacity: 0.15;
         }
         100% {
           opacity: 0;
@@ -90,9 +142,9 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background: rgba(10, 10, 15, 0.85);
+        background: rgba(15, 10, 30, 0.88);
         backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--card-border);
+        border-bottom: 1px solid rgba(124, 58, 237, 0.25);
       }
       .logo {
         display: flex;
@@ -105,16 +157,16 @@
         font-weight: 800;
       }
       .logo-icon {
-        width: 38px;
-        height: 38px;
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        border-radius: 9px;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        border-radius: 11px;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 16px;
-        color: var(--night);
-        box-shadow: 0 4px 15px rgba(201, 168, 76, 0.35);
+        color: #fff;
+        box-shadow: 0 4px 18px rgba(124, 58, 237, 0.45);
       }
       .nav-right {
         display: flex;
@@ -131,25 +183,25 @@
         transition: color 0.3s;
       }
       .nav-back:hover {
-        color: var(--gold);
+        color: var(--violet-light);
       }
       .nav-phone {
         display: flex;
         align-items: center;
         gap: 8px;
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        color: var(--night);
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
         padding: 9px 20px;
-        border-radius: 8px;
+        border-radius: 9px;
         text-decoration: none;
         font-weight: 700;
         font-size: 14px;
-        box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+        box-shadow: 0 4px 18px rgba(124, 58, 237, 0.35);
         transition: all 0.3s;
       }
       .nav-phone:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(201, 168, 76, 0.45);
+        box-shadow: 0 8px 28px rgba(236, 72, 153, 0.45);
       }
 
       /* ── PAGE ── */
@@ -158,12 +210,6 @@
         min-height: 100vh;
         position: relative;
         z-index: 1;
-        background: radial-gradient(
-            ellipse 70% 50% at 50% 0%,
-            rgba(201, 168, 76, 0.06) 0%,
-            transparent 70%
-          ),
-          var(--night);
       }
 
       /* ── BREADCRUMB ── */
@@ -178,8 +224,11 @@
         animation: fadeIn 0.6s ease both;
       }
       .breadcrumb a {
-        color: var(--gold);
+        color: var(--violet-light);
         text-decoration: none;
+      }
+      .breadcrumb a:hover {
+        color: var(--pink-light);
       }
       .breadcrumb i {
         font-size: 10px;
@@ -195,15 +244,15 @@
         animation: fadeSlideDown 0.7s 0.1s ease both;
       }
       .route-badge-pill {
-        background: rgba(201, 168, 76, 0.1);
-        border: 1px solid var(--card-border);
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.35);
         padding: 6px 16px;
         border-radius: 100px;
         font-size: 11px;
         font-weight: 700;
         letter-spacing: 1.5px;
         text-transform: uppercase;
-        color: var(--gold);
+        color: var(--violet-light);
       }
       .route-title {
         font-family: "Syne", sans-serif;
@@ -212,8 +261,11 @@
         letter-spacing: -0.5px;
       }
       .route-title .arrow {
-        color: var(--gold);
         margin: 0 12px;
+        background: linear-gradient(135deg, var(--violet-light), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       /* ── GRID ── */
@@ -246,7 +298,7 @@
       .car-summary img {
         width: 160px;
         height: 100px;
-        border-radius: 10px;
+        border-radius: 12px;
         object-fit: cover;
         flex-shrink: 0;
         border: 1px solid var(--card-border);
@@ -254,7 +306,7 @@
       .car-summary-info {
         flex: 1;
       }
-      .car-summary-info .car-name {
+      .car-name {
         font-family: "Syne", sans-serif;
         font-size: 20px;
         font-weight: 800;
@@ -272,17 +324,7 @@
         gap: 5px;
       }
       .car-meta i {
-        color: var(--gold);
-      }
-      .car-price {
-        font-family: "Syne", sans-serif;
-        font-size: 32px;
-        font-weight: 800;
-        background: linear-gradient(135deg, var(--gold-light), var(--gold));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        white-space: nowrap;
+        color: var(--violet-light);
       }
 
       /* ── TRIP DETAILS ── */
@@ -320,8 +362,11 @@
         background: var(--card-border);
       }
       .trip-divider-icon {
-        color: var(--gold);
         font-size: 16px;
+        background: linear-gradient(135deg, var(--violet-light), var(--cyan));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       /* ── TRIP STATS ── */
@@ -343,7 +388,24 @@
         font-family: "Syne", sans-serif;
         font-size: 20px;
         font-weight: 800;
-        color: var(--gold);
+      }
+      .trip-stat:nth-child(1) .trip-stat-val {
+        background: linear-gradient(135deg, var(--violet-light), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .trip-stat:nth-child(2) .trip-stat-val {
+        background: linear-gradient(135deg, var(--cyan-light), var(--emerald));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .trip-stat:nth-child(3) .trip-stat-val {
+        background: linear-gradient(135deg, var(--orange-light), var(--yellow));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
       .trip-stat-lbl {
         font-size: 11px;
@@ -369,7 +431,7 @@
       .map-loading {
         position: absolute;
         inset: 0;
-        background: var(--night3);
+        background: var(--ink2);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -385,8 +447,8 @@
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        border: 3px solid rgba(201, 168, 76, 0.2);
-        border-top-color: var(--gold);
+        border: 3px solid rgba(124, 58, 237, 0.2);
+        border-top-color: var(--violet);
         animation: spin 0.8s linear infinite;
       }
       @keyframes spin {
@@ -398,8 +460,25 @@
         color: var(--muted);
         font-size: 14px;
       }
+      .map-open-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 14px;
+        background: rgba(124, 58, 237, 0.08);
+        border-top: 1px solid var(--card-border);
+        color: var(--violet-light);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        transition: background 0.2s;
+      }
+      .map-open-btn:hover {
+        background: rgba(124, 58, 237, 0.18);
+      }
 
-      /* ── FORM ── */
+      /* ── FORM CARD ── */
       .form-card {
         padding: 32px;
       }
@@ -413,7 +492,10 @@
         gap: 10px;
       }
       .form-section-title i {
-        color: var(--gold);
+        background: linear-gradient(135deg, var(--violet-light), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       .form-row {
@@ -425,7 +507,6 @@
       .form-row.single {
         grid-template-columns: 1fr;
       }
-
       .form-field {
         display: flex;
         flex-direction: column;
@@ -446,22 +527,39 @@
       .form-field .input-wrap i {
         position: absolute;
         left: 14px;
-        color: var(--gold);
         font-size: 14px;
         pointer-events: none;
       }
+      .form-field .input-wrap.ic-violet i {
+        color: var(--violet-light);
+      }
+      .form-field .input-wrap.ic-pink i {
+        color: var(--pink-light);
+      }
+      .form-field .input-wrap.ic-cyan i {
+        color: var(--cyan-light);
+      }
+      .form-field .input-wrap.ic-orange i {
+        color: var(--orange-light);
+      }
+      .form-field .input-wrap.ic-emerald i {
+        color: var(--emerald-light);
+      }
+
       .form-field input,
       .form-field select,
       .form-field textarea {
         width: 100%;
-        background: rgba(255, 255, 255, 0.04);
+        background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
+        border-radius: 12px;
         padding: 13px 14px 13px 40px;
         color: var(--text);
         font-family: "Inter", sans-serif;
         font-size: 15px;
-        transition: border-color 0.3s, box-shadow 0.3s;
+        transition:
+          border-color 0.3s,
+          box-shadow 0.3s;
         outline: none;
       }
       .form-field textarea {
@@ -472,22 +570,23 @@
       .form-field input:focus,
       .form-field select:focus,
       .form-field textarea:focus {
-        border-color: var(--gold);
-        box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
+        border-color: var(--violet);
+        box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
       }
       .form-field input::placeholder,
       .form-field textarea::placeholder {
-        color: rgba(240, 237, 230, 0.3);
+        color: rgba(245, 240, 255, 0.25);
       }
       .form-field select option {
-        background: #1a1a26;
+        background: #1a1030;
         color: var(--text);
       }
-
-      /* date/time no left icon */
       .form-field .no-icon input,
       .form-field .no-icon select {
         padding-left: 14px;
+      }
+      .form-field input[type="date"]::-webkit-calendar-picker-indicator {
+        filter: invert(0.6);
       }
 
       .form-divider {
@@ -500,10 +599,17 @@
       .submit-btn {
         width: 100%;
         padding: 17px;
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        background: linear-gradient(
+          135deg,
+          var(--violet),
+          var(--pink),
+          var(--orange)
+        );
+        background-size: 200% 200%;
+        animation: gradShift 4s ease infinite;
         border: none;
-        border-radius: 12px;
-        color: var(--night);
+        border-radius: 14px;
+        color: #fff;
         font-family: "Inter", sans-serif;
         font-size: 17px;
         font-weight: 800;
@@ -514,15 +620,39 @@
         gap: 10px;
         transition: all 0.3s ease;
         letter-spacing: 0.3px;
-        box-shadow: 0 8px 24px rgba(201, 168, 76, 0.25);
+        box-shadow: 0 8px 28px rgba(124, 58, 237, 0.3);
         margin-top: 6px;
       }
       .submit-btn:hover {
         transform: translateY(-3px);
-        box-shadow: 0 16px 36px rgba(201, 168, 76, 0.45);
+        box-shadow: 0 16px 40px rgba(124, 58, 237, 0.5);
       }
       .submit-btn:active {
         transform: translateY(0);
+      }
+      .form-alert {
+        display: none;
+        padding: 14px 16px;
+        background: rgba(236, 72, 153, 0.12);
+        border: 1px solid rgba(236, 72, 153, 0.28);
+        border-radius: 14px;
+        color: #ffe6f1;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+      .form-alert.show {
+        display: block;
+      }
+      @keyframes gradShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
 
       .trust-row {
@@ -539,12 +669,20 @@
         font-size: 12px;
         color: var(--muted);
       }
-      .trust-item i {
-        color: var(--gold);
-        font-size: 12px;
+      .trust-item:nth-child(1) i {
+        color: var(--emerald-light);
+      }
+      .trust-item:nth-child(2) i {
+        color: var(--pink-light);
+      }
+      .trust-item:nth-child(3) i {
+        color: var(--cyan-light);
+      }
+      .trust-item:nth-child(4) i {
+        color: var(--orange-light);
       }
 
-      /* ── RIGHT COLUMN ── */
+      /* ── RIGHT COL ── */
       .right-col {
         display: flex;
         flex-direction: column;
@@ -557,8 +695,8 @@
         position: fixed;
         inset: 0;
         z-index: 2000;
-        background: rgba(10, 10, 15, 0.92);
-        backdrop-filter: blur(12px);
+        background: rgba(15, 10, 30, 0.92);
+        backdrop-filter: blur(14px);
         align-items: center;
         justify-content: center;
       }
@@ -566,14 +704,15 @@
         display: flex;
       }
       .success-modal {
-        background: var(--night2);
-        border: 1px solid var(--card-border);
-        border-radius: 20px;
+        background: var(--ink2);
+        border: 1px solid rgba(124, 58, 237, 0.3);
+        border-radius: 24px;
         padding: 52px 44px;
         max-width: 440px;
         width: 90%;
         text-align: center;
         animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        box-shadow: 0 30px 80px rgba(124, 58, 237, 0.2);
       }
       @keyframes popIn {
         from {
@@ -586,23 +725,27 @@
         }
       }
       .success-icon {
-        width: 72px;
-        height: 72px;
+        width: 76px;
+        height: 76px;
         border-radius: 50%;
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+        background: linear-gradient(135deg, var(--violet), var(--pink));
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 32px;
-        color: var(--night);
+        color: #fff;
         margin: 0 auto 24px;
-        box-shadow: 0 8px 30px rgba(201, 168, 76, 0.4);
+        box-shadow: 0 8px 32px rgba(124, 58, 237, 0.45);
       }
       .success-modal h2 {
         font-family: "Syne", sans-serif;
         font-size: 28px;
         font-weight: 800;
         margin-bottom: 12px;
+        background: linear-gradient(135deg, var(--violet-light), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
       .success-modal p {
         color: var(--muted);
@@ -617,7 +760,7 @@
       .success-btns a {
         flex: 1;
         padding: 13px;
-        border-radius: 10px;
+        border-radius: 12px;
         text-decoration: none;
         font-weight: 700;
         font-size: 14px;
@@ -628,11 +771,12 @@
         transition: all 0.3s;
       }
       .success-btns .btn-home {
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        color: var(--night);
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(124, 58, 237, 0.35);
       }
       .success-btns .btn-wa {
-        background: rgba(37, 211, 102, 0.15);
+        background: rgba(37, 211, 102, 0.12);
         border: 1px solid rgba(37, 211, 102, 0.3);
         color: #25d366;
       }
@@ -663,12 +807,12 @@
         transition: all 0.3s ease;
       }
       .float-phone {
-        background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-        color: var(--night);
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
       }
       .float-wa {
         background: #25d366;
-        color: white;
+        color: #fff;
       }
       .float-btn:hover {
         transform: scale(1.12) rotate(-5deg);
@@ -752,7 +896,6 @@
 
     <!-- PAGE -->
     <section class="page">
-      <!-- BREADCRUMB -->
       <div class="breadcrumb">
         <a href="index.html">Home</a>
         <i class="fas fa-chevron-right"></i>
@@ -761,7 +904,6 @@
         <span id="bc-route" style="color: var(--text)">Confirm & Pay</span>
       </div>
 
-      <!-- ROUTE TITLE -->
       <div class="route-header">
         <div class="route-badge-pill">One Way</div>
         <h1 class="route-title">
@@ -778,10 +920,16 @@
             <i class="fas fa-user-circle"></i> Passenger Details
           </div>
           <form id="bookingForm" onsubmit="submitBooking(event)" novalidate>
+            <div
+              id="formAlert"
+              class="form-alert"
+              role="alert"
+              aria-live="assertive"
+            ></div>
             <div class="form-row">
               <div class="form-field">
                 <label>Full Name</label>
-                <div class="input-wrap">
+                <div class="input-wrap ic-violet">
                   <i class="fas fa-user"></i>
                   <input
                     type="text"
@@ -793,7 +941,7 @@
               </div>
               <div class="form-field">
                 <label>Phone Number</label>
-                <div class="input-wrap">
+                <div class="input-wrap ic-pink">
                   <i class="fas fa-phone"></i>
                   <input
                     type="tel"
@@ -873,7 +1021,7 @@
             <div class="form-row single">
               <div class="form-field">
                 <label>Pickup Address / Landmark</label>
-                <div class="input-wrap">
+                <div class="input-wrap ic-orange">
                   <i class="fas fa-map-marker-alt"></i>
                   <input
                     type="text"
@@ -899,7 +1047,7 @@
                     >(optional — for confirmation)</span
                   ></label
                 >
-                <div class="input-wrap">
+                <div class="input-wrap ic-cyan">
                   <i class="fas fa-envelope"></i>
                   <input
                     type="email"
@@ -924,7 +1072,7 @@
                     >(optional)</span
                   ></label
                 >
-                <div class="input-wrap">
+                <div class="input-wrap ic-emerald">
                   <i class="fas fa-comment-dots"></i>
                   <textarea
                     name="instructions"
@@ -962,8 +1110,9 @@
             <div class="car-summary">
               <img
                 id="carImg"
+                loading="lazy"
                 src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=400&h=250&fit=crop"
-                alt="Vehicle"
+                alt="Selected vehicle"
               />
               <div class="car-summary-info">
                 <div class="car-name" id="carName">Toyota Innova</div>
@@ -973,7 +1122,6 @@
                   <span><i class="fas fa-gas-pump"></i> Diesel</span>
                 </div>
               </div>
-              <div class="car-price" id="carPrice">₹6,000</div>
             </div>
 
             <div class="trip-details">
@@ -1004,14 +1152,14 @@
                 <div class="trip-stat-lbl">Est. Time</div>
               </div>
               <div class="trip-stat">
-                <div class="trip-stat-val" id="statRate">₹13/km</div>
+                <div class="trip-stat-val" id="statRate">₹20/km</div>
                 <div class="trip-stat-lbl">Rate</div>
               </div>
             </div>
           </div>
 
           <!-- MAP CARD -->
-          <div class="map-card" style="position: relative">
+          <div class="map-card">
             <div class="map-loading" id="mapLoading">
               <div class="map-spinner"></div>
               <p>Loading route map…</p>
@@ -1019,41 +1167,21 @@
             <iframe
               id="mapFrame"
               src=""
-              allowfullscreen=""
+              allowfullscreen
               loading="lazy"
               referrerpolicy="no-referrer-when-downgrade"
               style="min-height: 380px; width: 100%; border: 0; display: block"
-              onload="document.getElementById('mapLoading').classList.add('hidden')"
-            ></iframe>
-            <a
-              id="openMapBtn"
-              href="#"
-              target="_blank"
-              style="
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-                padding: 14px;
-                background: rgba(201, 168, 76, 0.08);
-                border-top: 1px solid var(--card-border);
-                color: var(--gold);
-                text-decoration: none;
-                font-size: 13px;
-                font-weight: 600;
-                transition: background 0.2s;
+              onload="
+                document.getElementById('mapLoading').classList.add('hidden')
               "
-              onmouseover="this.style.background='rgba(201,168,76,0.15)'"
-              onmouseout="this.style.background='rgba(201,168,76,0.08)'"
-            >
+            ></iframe>
+            <a id="openMapBtn" href="#" target="_blank" class="map-open-btn">
               <i class="fas fa-external-link-alt"></i> Open full route in Google
               Maps
             </a>
           </div>
         </div>
-        <!-- /right-col -->
       </div>
-      <!-- /booking-grid -->
     </section>
 
     <!-- SUCCESS MODAL -->
@@ -1090,21 +1218,25 @@
     </div>
 
     <script>
-      // ── PARTICLES
+      // particles — multi-color
+      const pColors = [
+        "#7c3aed",
+        "#ec4899",
+        "#06b6d4",
+        "#10b981",
+        "#f97316",
+        "#eab308",
+      ];
       const pc = document.getElementById("particles");
       for (let i = 0; i < 25; i++) {
         const p = document.createElement("div");
         p.className = "particle";
-        const s = Math.random() * 3 + 1;
-        p.style.cssText = `width:${s}px;height:${s}px;left:${
-          Math.random() * 100
-        }%;bottom:${Math.random() * 15}%;animation-duration:${
-          Math.random() * 15 + 10
-        }s;animation-delay:${Math.random() * 10}s;`;
+        const s = Math.random() * 3 + 1,
+          col = pColors[Math.floor(Math.random() * pColors.length)];
+        p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random() * 100}%;bottom:${Math.random() * 15}%;animation-duration:${Math.random() * 15 + 10}s;animation-delay:${Math.random() * 10}s;background:${col}`;
         pc.appendChild(p);
       }
 
-      // ── CAR DATA
       const carsData = {
         "Maruti Dzire": {
           seats: 4,
@@ -1150,7 +1282,6 @@
         },
       };
 
-      // ── ROUTE DISTANCES + TIMES
       const routeInfo = {
         "Chandigarh-Ludhiana": { dist: 100, time: "~1.5 hrs" },
         "Chandigarh-Amritsar": { dist: 230, time: "~3.5 hrs" },
@@ -1173,115 +1304,114 @@
           k2 = `${to}-${from}`;
         return routeInfo[k1] || routeInfo[k2] || { dist: 200, time: "~3 hrs" };
       }
-
-      // ── READ URL PARAMS
       function qp(k) {
         return new URLSearchParams(window.location.search).get(k);
       }
 
-      function buildMapSrc(from, to) {
-        // Free Google Maps embed — NO API key needed, shows actual driving route
-        const origin = encodeURIComponent(from + ", Haryana, India");
-        const dest = encodeURIComponent(to + ", India");
-        return (
-          "https://maps.google.com/maps?saddr=" +
-          origin +
-          "&daddr=" +
-          dest +
-          "&dirflg=d&output=embed&t=m&z=8&hl=en"
-        );
-      }
-
       window.addEventListener("DOMContentLoaded", () => {
-        // Set min date
         document.getElementById("dateInput").min = new Date()
           .toISOString()
           .split("T")[0];
 
+        const alertBox = document.getElementById("formAlert");
+        const bookingForm = document.getElementById("bookingForm");
+        bookingForm.addEventListener("input", () => {
+          alertBox.classList.remove("show");
+          alertBox.textContent = "";
+          bookingForm
+            .querySelectorAll("input,select,textarea")
+            .forEach((el) => {
+              el.style.borderColor = "";
+            });
+        });
+
         const carName = qp("car") || "Toyota Innova";
         const from = qp("pickup") || "Chandigarh";
         const to = qp("dropoff") || "Delhi";
-        const price = qp("price");
-
         const car = carsData[carName] || carsData["Toyota Innova"];
         const info = getInfo(from, to);
-        const totalPrice = price || (info.dist * car.rate).toLocaleString();
+        const totalPrice = info.dist * car.rate;
 
-        // Update hero title
         document.getElementById("title-from").textContent = from;
         document.getElementById("title-to").textContent = to;
         document.getElementById("bc-route").textContent = `${from} → ${to}`;
-
-        // Car card
         document.getElementById("carImg").src = car.img;
         document.getElementById("carName").textContent = carName;
-        document.getElementById(
-          "carMeta"
-        ).innerHTML = `<span><i class="fas fa-user"></i> ${car.seats} Seats</span>
-     <span><i class="fas fa-suitcase"></i> ${car.bags} Bags</span>
-     <span><i class="fas fa-gas-pump"></i> ${car.fuel}</span>`;
-        document.getElementById("carPrice").textContent = `₹${Number(
-          totalPrice
-        ).toLocaleString()}`;
-
-        // Trip points
+        document.getElementById("carImg").alt = `${carName} vehicle`;
+        document.getElementById("carMeta").innerHTML =
+          `<span><i class="fas fa-user"></i> ${car.seats} Seats</span>
+           <span><i class="fas fa-suitcase"></i> ${car.bags} Bags</span>
+           <span><i class="fas fa-gas-pump"></i> ${car.fuel}</span>`;
         document.getElementById("fromCity").textContent = from;
         document.getElementById("toCity").textContent = to;
-
-        // Stats
         document.getElementById("statDist").textContent = info.dist + " km";
         document.getElementById("statTime").textContent = info.time;
         document.getElementById("statRate").textContent =
           "₹" + car.rate + "/km";
 
-        // ── MAP — free embed, no API key
-        const mapSrc = buildMapSrc(from, to);
-        document.getElementById("mapFrame").src = mapSrc;
-
-        // "Open in Google Maps" deep link with driving directions
-        const gmUrl =
-          "https://www.google.com/maps/dir/" +
-          encodeURIComponent(from + ", India") +
-          "/" +
-          encodeURIComponent(to + ", India") +
-          "/@/am=t/data=!4m2!4m1!3e0";
-        document.getElementById("openMapBtn").href = gmUrl;
+        const origin = encodeURIComponent(from + ", India");
+        const dest = encodeURIComponent(to + ", India");
+        document.getElementById("mapFrame").src =
+          "https://maps.google.com/maps?saddr=" +
+          origin +
+          "&daddr=" +
+          dest +
+          "&dirflg=d&output=embed&t=m&z=8&hl=en";
+        // Open full route in Google Maps (clean, reliable directions URL)
+        document.getElementById("openMapBtn").href =
+          "https://www.google.com/maps/dir/" + origin + "/" + dest + "/";
       });
 
-      // ── SUBMIT
       function submitBooking(e) {
         e.preventDefault();
         const form = e.target;
-        const name = form.querySelector('[name="name"]').value.trim();
-        const phone = form.querySelector('[name="phone"]').value.trim();
-        const date = form.querySelector('[name="date"]').value;
-        const time = form.querySelector('[name="time"]').value;
-        const addr = form.querySelector('[name="pickupAddress"]').value.trim();
+        const alertBox = document.getElementById("formAlert");
+        const fields = [
+          form.querySelector('[name="name"]'),
+          form.querySelector('[name="phone"]'),
+          form.querySelector('[name="date"]'),
+          form.querySelector('[name="time"]'),
+          form.querySelector('[name="pickupAddress"]'),
+        ];
+        const firstInvalid = fields.find((el) => !el.value.trim());
 
-        if (!name || !phone || !date || !time || !addr) {
-          // Shake validation
-          form.querySelectorAll("input, select, textarea").forEach((el) => {
-            if (!el.value.trim() && el.required) {
-              el.style.borderColor = "#ff6b35";
-              el.style.animation = "shake 0.3s ease";
-              setTimeout(() => {
-                el.style.animation = "";
-                el.style.borderColor = "";
-              }, 800);
+        if (firstInvalid) {
+          fields.forEach((el) => {
+            if (!el.value.trim()) {
+              el.style.borderColor = "#ec4899";
+              el.classList.add("shake");
+              setTimeout(() => el.classList.remove("shake"), 400);
+            } else {
+              el.style.borderColor = "";
             }
           });
+          alertBox.textContent =
+            "Please complete all required fields to confirm your ride.";
+          alertBox.classList.add("show");
+          firstInvalid.focus();
           return;
         }
 
+        alertBox.classList.remove("show");
+        alertBox.textContent = "";
         document.getElementById("successOverlay").classList.add("show");
       }
 
-      // Add shake keyframes
       const st = document.createElement("style");
-      st.textContent = `@keyframes shake {
-  0%,100%{transform:translateX(0)} 20%{transform:translateX(-6px)} 60%{transform:translateX(6px)}
-}`;
+      st.textContent = `@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}60%{transform:translateX(6px)}} .shake{animation:shake 0.4s ease both;}`;
       document.head.appendChild(st);
+
+      document.addEventListener("click", (event) => {
+        const overlay = document.getElementById("successOverlay");
+        if (overlay.classList.contains("show") && event.target === overlay) {
+          overlay.classList.remove("show");
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          document.getElementById("successOverlay").classList.remove("show");
+        }
+      });
     </script>
   </body>
 </html>

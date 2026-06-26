@@ -1,220 +1,1357 @@
-<!DOCTYPE html>
+ <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chandigarh to Dehradun One Way Cab Services | Kdm Cab Service</title>
-    <link rel="stylesheet" href="../../../styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chandigarh to Dehradun One Way Cab | KDM Cab Service</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
     <style>
-        .route-hero {
-            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
-            padding: 60px 20px;
-            color: white;
-            text-align: center;
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+        background: #0f0a1e;
+        color: #f5f0ff;
+        overflow-x: hidden;
+      }
+      :root {
+        --violet: #7c3aed;
+        --violet-light: #a78bfa;
+        --violet-dark: #5b21b6;
+        --pink: #ec4899;
+        --pink-light: #f9a8d4;
+        --orange: #f97316;
+        --orange-light: #fdba74;
+        --cyan: #06b6d4;
+        --cyan-light: #67e8f9;
+        --emerald: #10b981;
+        --emerald-light: #6ee7b7;
+        --yellow: #eab308;
+        --yellow-light: #fde047;
+        --ink: #0f0a1e;
+        --ink2: #1a1030;
+        --ink3: #221540;
+        --card-bg: rgba(255, 255, 255, 0.06);
+        --card-border: rgba(255, 255, 255, 0.12);
+        --text: #f5f0ff;
+        --muted: rgba(245, 240, 255, 0.55);
+        --radius: 18px;
+      }
+      /* BG */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            ellipse 70% 50% at 10% 20%,
+            rgba(124, 58, 237, 0.22) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 50% 40% at 90% 10%,
+            rgba(6, 182, 212, 0.15) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 60% 50% at 50% 90%,
+            rgba(236, 72, 153, 0.12) 0%,
+            transparent 65%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 80% 60%,
+            rgba(249, 115, 22, 0.1) 0%,
+            transparent 55%
+          );
+        animation: bgPulse 12s ease-in-out infinite alternate;
+      }
+      @keyframes bgPulse {
+        0% {
+          opacity: 1;
         }
-        .booking-section {
-            background-color: #f8f9fa;
-            padding: 50px 20px;
+        50% {
+          opacity: 0.7;
         }
-        .booking-title {
-            text-align: center;
-            margin-bottom: 40px;
+        100% {
+          opacity: 1;
         }
-        .booking-title h2 {
-            font-size: 28px;
-            color: #1a1a2e;
-            margin-bottom: 10px;
+      }
+      #cursor-glow {
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.08) 0%,
+          transparent 70%
+        );
+        position: fixed;
+        pointer-events: none;
+        z-index: 0;
+        transform: translate(-50%, -50%);
+        transition:
+          left 0.08s linear,
+          top 0.08s linear;
+      }
+      #particles {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        animation: floatP linear infinite;
+        opacity: 0;
+      }
+      @keyframes floatP {
+        0% {
+          opacity: 0;
+          transform: translateY(0) scale(0);
         }
-        .booking-title .divider {
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, #ff6b35, #f7931e);
-            margin: 0 auto;
-            border-radius: 2px;
+        10% {
+          opacity: 0.7;
+          transform: translateY(-20px) scale(1);
         }
-        .booking-content {
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
+        90% {
+          opacity: 0.2;
         }
-        .cars-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        100% {
+          opacity: 0;
+          transform: translateY(-100vh) scale(0.3);
         }
-        .car-item {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+      }
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 20px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        transition: all 0.4s ease;
+      }
+      nav.scrolled {
+        background: rgba(15, 10, 30, 0.92);
+        backdrop-filter: blur(20px);
+        padding: 14px 60px;
+        border-bottom: 1px solid rgba(124, 58, 237, 0.3);
+        box-shadow: 0 4px 40px rgba(124, 58, 237, 0.15);
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--text);
+        font-family: "Syne", sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+      .logo-icon {
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        color: #fff;
+        box-shadow: 0 4px 20px rgba(124, 58, 237, 0.5);
+      }
+      .nav-links {
+        display: flex;
+        gap: 32px;
+        list-style: none;
+      }
+      .nav-links a {
+        color: var(--muted);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 500;
+        transition: color 0.3s;
+        position: relative;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--violet), var(--pink));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s ease;
+      }
+      .nav-links a:hover {
+        color: var(--violet-light);
+      }
+      .nav-links a:hover::after {
+        transform: scaleX(1);
+      }
+      .nav-cta {
+        background: linear-gradient(
+          135deg,
+          var(--violet),
+          var(--pink)
+        ) !important;
+        color: #fff !important;
+        padding: 10px 24px;
+        border-radius: 10px;
+        font-weight: 700 !important;
+        box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+      }
+      .nav-cta:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 8px 30px rgba(236, 72, 153, 0.5) !important;
+      }
+      .nav-cta::after {
+        display: none !important;
+      }
+      .hamburger {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 22px;
+        cursor: pointer;
+      }
+      /* HERO */
+      .route-hero {
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 140px 20px 80px;
+        position: relative;
+        z-index: 1;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.35);
+        padding: 8px 20px;
+        border-radius: 100px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--violet-light);
+        margin-bottom: 28px;
+        animation: fadeSlideDown 0.8s ease both;
+      }
+      .route-hero h1 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(36px, 5vw, 72px);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -1.5px;
+        animation: fadeSlideDown 0.9s 0.1s ease both;
+      }
+      .route-hero h1 .g1 {
+        background: linear-gradient(
+          135deg,
+          var(--violet-light),
+          var(--pink),
+          var(--orange)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .route-hero h1 .g2 {
+        background: linear-gradient(135deg, var(--cyan), var(--emerald));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-price {
+        font-family: "Syne", sans-serif;
+        font-size: 42px;
+        font-weight: 800;
+        margin-top: 16px;
+        background: linear-gradient(135deg, var(--orange), var(--yellow));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeSlideDown 1s 0.2s ease both;
+      }
+      .hero-meta {
+        display: flex;
+        gap: 32px;
+        justify-content: center;
+        margin-top: 32px;
+        animation: fadeSlideDown 1.1s 0.3s ease both;
+        flex-wrap: wrap;
+      }
+      .hero-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        padding: 10px 20px;
+        border-radius: 100px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .hero-meta-item i {
+        color: var(--violet-light);
+      }
+      @keyframes fadeSlideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
         }
-        .car-item img {
-            width: 100%;
-            height: 130px;
-            border-radius: 8px;
-            object-fit: cover;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        .car-item h4 {
-            margin: 0 0 6px 0;
-            color: #1a1a2e;
-            font-size: 18px;
+      }
+      @keyframes fadeSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
         }
-        .status-available {
-            color: #25d366;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 10px;
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        .price-display {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 10px;
+      }
+      /* BOOKING SECTION */
+      .booking-section {
+        padding: 100px 60px;
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(
+          180deg,
+          var(--ink) 0%,
+          #130d28 50%,
+          var(--ink) 100%
+        );
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      .section-eyebrow {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 16px;
+        padding: 5px 16px;
+        border-radius: 100px;
+      }
+      .ey-violet {
+        color: var(--violet-light);
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.3);
+      }
+      .section-header h2 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(28px, 3.5vw, 46px);
+        font-weight: 800;
+        letter-spacing: -1px;
+        line-height: 1.1;
+      }
+      .section-header p {
+        color: var(--muted);
+        margin-top: 14px;
+        font-size: 16px;
+      }
+      .booking-grid {
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        gap: 28px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      /* CAR CARDS */
+      .cars-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .car-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: all 0.4s ease;
+        animation: fadeSlideUp 0.8s ease both;
+      }
+      .car-card:nth-child(2) {
+        animation-delay: 0.15s;
+      }
+      .car-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .car-card:hover {
+        transform: translateY(-6px);
+        border-color: var(--violet);
+        box-shadow: 0 20px 50px rgba(124, 58, 237, 0.25);
+      }
+      .car-img {
+        height: 160px;
+        overflow: hidden;
+        position: relative;
+      }
+      .car-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.75);
+        transition:
+          transform 0.5s ease,
+          filter 0.5s ease;
+      }
+      .car-card:hover .car-img img {
+        transform: scale(1.08);
+        filter: brightness(0.95);
+      }
+      .car-type-badge {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        padding: 5px 12px;
+        border-radius: 8px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: #fff;
+      }
+      .badge-sedan {
+        background: linear-gradient(135deg, var(--violet), var(--violet-dark));
+      }
+      .badge-suv {
+        background: linear-gradient(135deg, var(--cyan), #0891b2);
+      }
+      .badge-premium {
+        background: linear-gradient(135deg, var(--pink), #db2777);
+      }
+      .car-body {
+        padding: 20px;
+      }
+      .car-name {
+        font-family: "Syne", sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 6px;
+      }
+      .car-status {
+        color: var(--emerald-light);
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .car-status::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--emerald);
+        display: inline-block;
+        animation: pulse 1.8s ease infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
         }
-        .offer-price {
-            font-size: 24px;
-            font-weight: 800;
-            color: #ff6b35;
+        50% {
+          opacity: 0.4;
         }
-        .book-car-btn {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
+      }
+      .car-specs {
+        display: flex;
+        gap: 14px;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+      }
+      .car-specs span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .car-specs i {
+        color: var(--violet-light);
+      }
+      .price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .price-main {
+        font-family: "Syne", sans-serif;
+        font-size: 28px;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--violet-light), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .price-label {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .book-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(
+          135deg,
+          var(--violet),
+          var(--pink),
+          var(--orange)
+        );
+        background-size: 200% 200%;
+        animation: gradShift 4s ease infinite;
+        border: none;
+        border-radius: 12px;
+        color: #fff;
+        font-family: "Inter", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        letter-spacing: 0.3px;
+      }
+      .book-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 35px rgba(124, 58, 237, 0.5);
+      }
+      @keyframes gradShift {
+        0% {
+          background-position: 0% 50%;
         }
-        .book-car-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(255,107,53,0.4);
+        50% {
+          background-position: 100% 50%;
         }
-        .map-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        100% {
+          background-position: 0% 50%;
         }
-        .map-card iframe {
-            width: 100%;
-            height: 500px;
-            border: none;
+      }
+      /* MAP */
+      .map-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        animation: fadeSlideUp 0.8s 0.2s ease both;
+      }
+      .map-header {
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--card-border);
+      }
+      .map-header h3 {
+        font-family: "Syne", sans-serif;
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .map-header p {
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .map-card iframe {
+        width: 100%;
+        height: 420px;
+        border: none;
+        display: block;
+      }
+      .map-card #route-map {
+        width: 100%;
+        height: 420px;
+        border: none;
+      }
+      .map-route-info {
+        padding: 20px 24px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        border-top: 1px solid var(--card-border);
+      }
+      .route-stat {
+        text-align: center;
+      }
+      .route-stat-val {
+        font-family: "Syne", sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+      }
+      .route-stat-val.rv1 {
+        background: linear-gradient(135deg, var(--violet-light), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .route-stat-val.rv2 {
+        background: linear-gradient(135deg, var(--cyan), var(--emerald));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .route-stat-val.rv3 {
+        background: linear-gradient(135deg, var(--orange), var(--yellow));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .route-stat-lbl {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 3px;
+      }
+      /* REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-delay-1 {
+        transition-delay: 0.1s;
+      }
+      .reveal-delay-2 {
+        transition-delay: 0.2s;
+      }
+      /* INFO SECTION */
+      .info-section {
+        padding: 100px 60px;
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(180deg, #130d28 0%, var(--ink) 100%);
+      }
+      .info-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .info-container h2 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(24px, 3vw, 36px);
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        margin-bottom: 24px;
+      }
+      .info-container h5 {
+        font-family: "Syne", sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+        margin-top: 32px;
+        margin-bottom: 10px;
+        background: linear-gradient(135deg, var(--violet-light), var(--pink));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .info-container p {
+        color: var(--muted);
+        line-height: 1.9;
+        margin-bottom: 20px;
+        font-size: 15px;
+      }
+      /* WHY CARDS */
+      .why-section {
+        padding: 100px 60px;
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(180deg, var(--ink) 0%, #130d28 100%);
+      }
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+        max-width: 1300px;
+        margin: 0 auto;
+      }
+      .why-card {
+        padding: 32px 26px;
+        border: 1px solid var(--card-border);
+        border-radius: var(--radius);
+        background: var(--card-bg);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+      }
+      .why-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .why-card:nth-child(1)::before {
+        background: linear-gradient(90deg, var(--violet), var(--pink));
+      }
+      .why-card:nth-child(2)::before {
+        background: linear-gradient(90deg, var(--cyan), var(--emerald));
+      }
+      .why-card:nth-child(3)::before {
+        background: linear-gradient(90deg, var(--orange), var(--yellow));
+      }
+      .why-card:nth-child(4)::before {
+        background: linear-gradient(90deg, var(--pink), var(--orange));
+      }
+      .why-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+      }
+      .why-card:hover::before {
+        transform: scaleX(1);
+      }
+      .why-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        margin-bottom: 18px;
+        border: 1px solid var(--card-border);
+        transition: all 0.3s;
+      }
+      .why-card:nth-child(1) .why-icon {
+        background: rgba(124, 58, 237, 0.15);
+        color: var(--violet-light);
+      }
+      .why-card:nth-child(2) .why-icon {
+        background: rgba(6, 182, 212, 0.15);
+        color: var(--cyan-light);
+      }
+      .why-card:nth-child(3) .why-icon {
+        background: rgba(249, 115, 22, 0.15);
+        color: var(--orange-light);
+      }
+      .why-card:nth-child(4) .why-icon {
+        background: rgba(236, 72, 153, 0.15);
+        color: var(--pink-light);
+      }
+      .why-card:nth-child(1):hover .why-icon {
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4);
+      }
+      .why-card:nth-child(2):hover .why-icon {
+        background: linear-gradient(135deg, var(--cyan), var(--emerald));
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(6, 182, 212, 0.4);
+      }
+      .why-card:nth-child(3):hover .why-icon {
+        background: linear-gradient(135deg, var(--orange), var(--yellow));
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+      }
+      .why-card:nth-child(4):hover .why-icon {
+        background: linear-gradient(135deg, var(--pink), var(--orange));
+        color: #fff;
+        box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+      }
+      .why-card h3 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .why-card p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+      /* CTA */
+      .cta-section {
+        padding: 100px 60px;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(
+          135deg,
+          #0f0a1e 0%,
+          #1a0e3a 40%,
+          #0f0a1e 100%
+        );
+      }
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.1) 0%,
+          rgba(236, 72, 153, 0.05) 40%,
+          transparent 70%
+        );
+        pointer-events: none;
+        animation: ctaGlow 6s ease-in-out infinite alternate;
+      }
+      @keyframes ctaGlow {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
         }
-        @media (max-width: 992px) {
-            .booking-content {
-                grid-template-columns: 1fr;
-            }
+        100% {
+          transform: translate(-50%, -50%) scale(1.2);
         }
+      }
+      .cta-section h2 {
+        font-family: "Syne", sans-serif;
+        font-size: clamp(32px, 4vw, 56px);
+        font-weight: 800;
+        margin-bottom: 16px;
+        letter-spacing: -1.5px;
+      }
+      .cta-section p {
+        color: var(--muted);
+        font-size: 17px;
+        max-width: 480px;
+        margin: 0 auto 40px;
+      }
+      .cta-phones {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .cta-btn-primary {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 32px;
+        border-radius: 14px;
+        text-decoration: none;
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
+        transition: all 0.3s ease;
+      }
+      .cta-btn-primary:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 50px rgba(124, 58, 237, 0.6);
+      }
+      .cta-btn-secondary {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 32px;
+        border-radius: 14px;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        font-size: 16px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+      }
+      .cta-btn-secondary:hover {
+        transform: translateY(-4px);
+      }
+      /* FOOTER */
+      footer {
+        background: #0a0818;
+        border-top: 1px solid rgba(124, 58, 237, 0.2);
+        padding: 30px 60px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        color: var(--muted);
+        position: relative;
+        z-index: 1;
+      }
+      /* FLOATERS */
+      .float-btns {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        z-index: 999;
+      }
+      .float-btn {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+      .float-phone {
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
+      }
+      .float-whatsapp {
+        background: #25d366;
+        color: #fff;
+      }
+      .float-btn:hover {
+        transform: scale(1.15) rotate(-5deg);
+      }
+      #scrollTop {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.3);
+        color: var(--text);
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        z-index: 999;
+      }
+      #scrollTop.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+      #scrollTop:hover {
+        background: linear-gradient(135deg, var(--violet), var(--pink));
+        color: #fff;
+        border-color: var(--violet);
+      }
+      @media (max-width: 900px) {
+        nav {
+          padding: 16px 24px;
+        }
+        nav.scrolled {
+          padding: 12px 24px;
+        }
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: block;
+        }
+        .booking-section,
+        .info-section,
+        .why-section,
+        .cta-section {
+          padding: 70px 24px;
+        }
+        .booking-grid {
+          grid-template-columns: 1fr;
+        }
+        footer {
+          flex-direction: column;
+          gap: 10px;
+          text-align: center;
+          padding: 24px;
+        }
+        .hero-meta {
+          gap: 12px;
+        }
+      }
     </style>
-</head>
-<body>
-    <header class="header" id="header">
-        <div class="container">
-            <nav class="nav">
-                <div class="logo">
-                    <a href="../../../index.html" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 10px;">
-                        <i class="fas fa-car"></i>
-                        <span>Kdm Cab Service</span>
-                    </a>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="../../../index.html">Home</a></li>
-                    <li class="dropdown">
-                        <a href="../../../index.html#packages">Tour Packages <i class="fas fa-chevron-down" style="font-size: 12px; margin-left: 5px;"></i></a>
-                        <div class="dropdown-content">
-                            <a href="chandigarh-to-ludhiana.html">Chandigarh to Ludhiana</a>
-                            <a href="chandigarh-to-amritsar.html">Chandigarh to Amritsar</a>
-                            <a href="chandigarh-to-dehradun.html">Chandigarh to Dehradun</a>
-                            <a href="chandigarh-to-dharamshala.html">Chandigarh to Dharamshala</a>
-                            <a href="shimla-to-delhi.html">Shimla to Delhi</a>
-                            <a href="chandigarh-to-manali.html">Chandigarh to Manali</a>
-                            <a href="delhi-to-manali.html">Delhi to Manali</a>
-                            <a href="chandigarh-to-delhi.html">Chandigarh to Delhi</a>
-                        </div>
-                    </li>
-                    <li><a href="../../../index.html#fleet">Our Cabs</a></li>
-                    <li><a href="../../../index.html#cities">Locations</a></li>
-                    <li><a href="../../../index.html#contact" class="book-cab-btn">Book Cab</a></li>
-                </ul>
-                <a href="tel:+91-9803384033" class="nav-phone">
-                    <i class="fas fa-phone"></i> +91-9803384033
-                </a>
-                <div class="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
-    </header>
-
+  </head>
+  <body>
+    <div id="cursor-glow"></div>
+    <div id="particles"></div>
+    <!-- NAV -->
+    <nav id="nav">
+      <a href="../../../index.html" class="logo">
+        <div class="logo-icon"><i class="fas fa-car"></i></div>
+        KDM Cabs
+      </a>
+      <ul class="nav-links">
+        <li><a href="../../../index.html">Home</a></li>
+        <li><a href="../../../index.html#routes">Routes</a></li>
+        <li><a href="../../../index.html#fleet">Fleet</a></li>
+        <li><a href="../../../index.html#cities">Locations</a></li>
+        <li><a href="#contact" class="nav-cta">Book Now</a></li>
+      </ul>
+      <button class="hamburger"><i class="fas fa-bars"></i></button>
+    </nav>
+    <!-- HERO -->
     <section class="route-hero">
-        <div class="container">
-            <h1>Chandigarh to Dehradun One Way Cab Services</h1>
-            <p style="font-size: 28px; color: #ff6b35; font-weight: 700; margin-top: 10px;">Start From ₹ 3,300/-</p>
+      <div class="hero-eyebrow">One Way</div>
+      <h1>
+        <span class="g1">Chandigarh</span><br />to
+        <span class="g2">Dehradun</span>
+      </h1>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <i class="fas fa-road"></i> 230 km distance
         </div>
+        <div class="hero-meta-item">
+          <i class="fas fa-clock"></i> ~4 hrs journey
+        </div>
+        <div class="hero-meta-item">
+          <i class="fas fa-ban"></i> Free cancellation
+        </div>
+        <div class="hero-meta-item">
+          <i class="fas fa-receipt"></i> GST bill available
+        </div>
+      </div>
     </section>
-
-    <section class="booking-section">
-        <div class="container">
-            <div class="booking-title">
-                <h2>BOOK TAXI FOR CHANDIGARH TO DEHRADUN</h2>
-                <div class="divider"></div>
+    <!-- BOOKING -->
+    <section class="booking-section" id="booking">
+      <div class="section-header reveal">
+        <div class="section-eyebrow ey-violet">Book Your Cab</div>
+        <h2>Choose Your Vehicle</h2>
+        <p>All cabs GPS-tracked, sanitized daily &amp; fully insured</p>
+      </div>
+      <div class="booking-grid">
+        <div class="cars-list">
+          <!-- Dzire -->
+          <div class="car-card reveal">
+            <div class="car-img">
+              <img
+                src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=500&h=300&fit=crop"
+                alt="Maruti Dzire"
+              />
+              <span class="car-type-badge badge-sedan">Sedan</span>
             </div>
-            <div class="booking-content">
-                <div class="cars-list">
-                    <div class="car-item">
-                        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=400&h=250&fit=crop" alt="Maruti Dzire">
-                        <h4>Maruti Dzire <span class="status-available">(Available)</span></h4>
-                        <div class="price-display">
-                            <span class="offer-price">₹ 3,300/-</span>
-                        </div>
-                        <a href="../../../booking-page.html?car=Maruti%20Dzire&pickup=Chandigarh&dropoff=Dehradun&price=3300" class="book-car-btn">Book Maruti Dzire</a>
-                    </div>
-                </div>
-                <div class="map-card">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d438549!2d77.6820393!3d30.316496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390f90d8980333d3%3A0xc0e7e2239b7d655c!2sDehradun%2C%20Uttarakhand!5e0!3m2!1sen!2sus!4v1782147733!5m2!1sen!2sus" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+            <div class="car-body">
+              <div class="car-name">Maruti Dzire</div>
+              <div class="car-status">Available Now</div>
+              <div class="car-specs">
+                <span><i class="fas fa-user"></i> 4 Seats</span>
+                <span><i class="fas fa-suitcase"></i> 4 Bags</span>
+                <span><i class="fas fa-gas-pump"></i> CNG / Petrol</span>
+              </div>
+              <a
+                href="../../../booking-page.html?car=Maruti%20Dzire&pickup=Chandigarh&dropoff=Dehradun"
+                class="book-btn"
+              >
+                <i class="fas fa-car"></i> Book Maruti Dzire
+              </a>
             </div>
+          </div>
+          <!-- Innova -->
+          <div class="car-card reveal reveal-delay-1">
+            <div class="car-img">
+              <img
+                src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?w=500&h=300&fit=crop"
+                alt="Toyota Innova"
+              />
+              <span class="car-type-badge badge-suv">SUV</span>
+            </div>
+            <div class="car-body">
+              <div class="car-name">Toyota Innova</div>
+              <div class="car-status">Available Now</div>
+              <div class="car-specs">
+                <span><i class="fas fa-user"></i> 7 Seats</span>
+                <span><i class="fas fa-suitcase"></i> 6 Bags</span>
+                <span><i class="fas fa-gas-pump"></i> Diesel</span>
+              </div>
+              <a
+                href="../../../booking-page.html?car=Toyota%20Innova&pickup=Chandigarh&dropoff=Dehradun"
+                class="book-btn"
+              >
+                <i class="fas fa-car"></i> Book Toyota Innova
+              </a>
+            </div>
+          </div>
+          <!-- Innova Crysta -->
+          <div class="car-card reveal reveal-delay-2">
+            <div class="car-img">
+              <img
+                src="https://images.unsplash.com/photo-1621007947382-bb3c39e41fb3?w=500&h=300&fit=crop"
+                alt="Innova Crysta"
+              />
+              <span class="car-type-badge badge-premium">Premium</span>
+            </div>
+            <div class="car-body">
+              <div class="car-name">Innova Crysta</div>
+              <div class="car-status">Available Now</div>
+              <div class="car-specs">
+                <span><i class="fas fa-user"></i> 7 Seats</span>
+                <span><i class="fas fa-suitcase"></i> 6 Bags</span>
+                <span><i class="fas fa-gas-pump"></i> Diesel</span>
+              </div>
+              <a
+                href="../../../booking-page.html?car=Innova%20Crysta&pickup=Chandigarh&dropoff=Dehradun"
+                class="book-btn"
+              >
+                <i class="fas fa-car"></i> Book Innova Crysta
+              </a>
+            </div>
+          </div>
         </div>
+        <!-- MAP -->
+        <div class="map-card reveal">
+            <div class="map-header">
+            <h3>Route Map</h3>
+            <p>Chandigarh → Dehradun route</p>
+          </div>
+          <div id="route-map"></div>
+          <div class="map-route-info"></div>
+      </div>
     </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-car"></i>
-                    <span>Kdm Cab Service</span>
-                </div>
-                <p>&copy; 2026 Kdm Cab Service. All Rights Reserved.</p>
-            </div>
+    <!-- WHY KDM -->
+    <section class="why-section">
+      <div class="section-header reveal">
+        <div class="section-eyebrow ey-violet">Why KDM</div>
+        <h2>Travel the smart way</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal">
+          <div class="why-icon"><i class="fas fa-tags"></i></div>
+          <h3>Transparent Pricing</h3>
+          <p>
+            The fare you see is the fare you pay. No hidden charges, no tolls
+            surprise at the end.
+          </p>
         </div>
+        <div class="why-card reveal reveal-delay-1">
+          <div class="why-icon"><i class="fas fa-satellite-dish"></i></div>
+          <h3>GPS Tracked</h3>
+          <p>
+            Every vehicle runs real-time satellite tracking for safe, navigated
+            journeys.
+          </p>
+        </div>
+        <div class="why-card reveal reveal-delay-2">
+          <div class="why-icon"><i class="fas fa-ban"></i></div>
+          <h3>Free Cancellation</h3>
+          <p>
+            Cancel anytime without a penalty. Total flexibility because plans
+            change.
+          </p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon"><i class="fas fa-headset"></i></div>
+          <h3>24 × 7 Support</h3>
+          <p>
+            Call us any hour. Our team is always reachable, ready to help on the
+            go.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- INFO -->
+    <section class="info-section">
+      <div class="info-container reveal">
+        <div class="section-eyebrow ey-violet" style="margin-bottom: 20px">
+          Route Details
+        </div>
+        <h2>Chandigarh to Dehradun Cab Service</h2>
+        <p>
+          KDM Cab Service offers reliable and comfortable one-way cab service from Chandigarh to Dehradun. Our experienced drivers and well-maintained vehicles ensure a smooth journey. For exact distance and travel time, please use the map below or contact us.
+        </p>
+        <h5>About the Route</h5>
+        <p>
+          The Chandigarh to Dehradun route is one of the most traveled corridors
+          in Punjab, connecting the tri-city region to the holy city of the
+          Golden Temple. The highway passes through Ludhiana and Jalandhar, both
+          excellent stops for refreshments. Our drivers are experienced on this
+          route in all weather and traffic conditions.
+        </p>
+        <h5>Things to Do in Amritsar</h5>
+        <p>
+          Amritsar is home to the iconic Sri Harmandir Sahib (Golden Temple),
+          Jallianwala Bagh, Wagah Border ceremony, and the vibrant Katra Jaimal
+          Singh market. Whether you are visiting for pilgrimage, tourism, or
+          business, our cabs ensure you arrive comfortably and on time.
+        </p>
+        <h5>Booking Process</h5>
+        <p>
+          Simply choose your preferred vehicle above and click Book.
+          Alternatively, call or WhatsApp us directly on +91 98033 84033 to
+          confirm your cab instantly. We provide GST invoices on request and
+          accept all major payment methods.
+        </p>
+      </div>
+    </section>
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+      <div class="section-eyebrow ey-violet reveal">Book Now</div>
+      <h2 class="reveal">
+        Ready to travel?<br />
+        <span
+          style="
+            background: linear-gradient(
+              135deg,
+              var(--violet-light),
+              var(--pink),
+              var(--orange)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          "
+          >We pick up 24 × 7</span
+        >
+      </h2>
+      <p class="reveal">
+        Call us directly or WhatsApp — we'll confirm your Chandigarh to Dehradun
+        booking in minutes.
+      </p>
+      <div class="cta-phones reveal">
+        <a href="tel:+919803384033" class="cta-btn-primary"
+          ><i class="fas fa-phone"></i> +91 98033 84033</a
+        >
+        <a href="tel:+919041194411" class="cta-btn-secondary"
+          ><i class="fas fa-phone"></i> +91 90411 94411</a
+        >
+      </div>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+      <a href="../../../index.html" class="logo" style="font-size: 18px">
+        <div
+          class="logo-icon"
+          style="width: 34px; height: 34px; font-size: 14px"
+        >
+          <i class="fas fa-car"></i>
+        </div>
+        KDM Cab Service
+      </a>
+      <span>© 2026 KDM Cab Service. All rights reserved.</span>
     </footer>
-
-    <div class="floating-contact">
-        <a href="tel:+91-9803384033" class="float-btn float-phone">
-            <i class="fas fa-phone"></i>
-        </a>
-        <a href="https://wa.me/919803384033" target="_blank" class="float-btn float-whatsapp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="mailto:info@kdmcabservice.com" class="float-btn float-email">
-            <i class="far fa-envelope"></i>
-        </a>
+    <!-- FLOATERS -->
+    <div class="float-btns">
+      <a href="tel:+919803384033" class="float-btn float-phone"
+        ><i class="fas fa-phone"></i
+      ></a>
+      <a
+        href="https://wa.me/919803384033"
+        target="_blank"
+        class="float-btn float-whatsapp"
+        ><i class="fab fa-whatsapp"></i
+      ></a>
     </div>
-
-    <button class="scroll-to-top" id="scrollToTop">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <script src="../../../script.js"></script>
-</body>
+    <button id="scrollTop"><i class="fas fa-arrow-up"></i></button>
+    <script>
+      const glow = document.getElementById("cursor-glow");
+      document.addEventListener("mousemove", (e) => {
+        glow.style.left = e.clientX + "px";
+        glow.style.top = e.clientY + "px";
+      });
+      const pColors = [
+        "#7c3aed",
+        "#ec4899",
+        "#06b6d4",
+        "#10b981",
+        "#f97316",
+        "#eab308",
+      ];
+      const pc = document.getElementById("particles");
+      for (let i = 0; i < 35; i++) {
+        const p = document.createElement("div");
+        p.className = "particle";
+        const size = Math.random() * 3 + 1;
+        const col = pColors[Math.floor(Math.random() * pColors.length)];
+        p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random() * 100}%;bottom:${Math.random() * 20}%;animation-duration:${Math.random() * 15 + 10}s;animation-delay:${Math.random() * 10}s;background:${col}`;
+        pc.appendChild(p);
+      }
+      const nav = document.getElementById("nav");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 60);
+        document
+          .getElementById("scrollTop")
+          .classList.toggle("show", window.scrollY > 400);
+      });
+      document
+        .getElementById("scrollTop")
+        .addEventListener("click", () =>
+          window.scrollTo({ top: 0, behavior: "smooth" }),
+        );
+      const obs = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          }),
+        { threshold: 0.12 },
+      );
+      document.querySelectorAll(".reveal").forEach((el) => obs.observe(el));
+    </script>
+    <script>
+      (function(){
+        const mapCard = document.querySelector('.map-card');
+        if(!mapCard) return;
+        const origin = (document.querySelector('.route-hero .g1')||{}).textContent.trim() || '';
+        const dest = (document.querySelector('.route-hero .g2')||{}).textContent.trim() || '';
+        const heroItems = Array.from(document.querySelectorAll('.hero-meta-item')).map(el=>el.textContent.trim());
+        const distItem = heroItems.find(t=>/km/i.test(t))||'';
+        const durItem = heroItems.find(t=>/hr|min|journey/i.test(t))||'';
+        const infoWrap = mapCard.querySelector('.map-route-info');
+        if(infoWrap){
+          infoWrap.innerHTML = `
+            <div class="route-stat">
+              <div class="route-stat-val rv1">${distItem.replace(/distance/i,'').trim()}</div>
+              <div class="route-stat-lbl">Distance</div>
+            </div>
+            <div class="route-stat">
+              <div class="route-stat-val rv2">${durItem.replace(/~|journey/i,'').trim()}</div>
+              <div class="route-stat-lbl">Estimated Time</div>
+            </div>
+            <div class="route-stat">
+              <div class="route-stat-val rv3"><a class="open-map" href="https://www.google.com/maps/dir/${encodeURIComponent(origin)}/${encodeURIComponent(dest)}/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none">Open in Google Maps</a></div>
+              <div class="route-stat-lbl">Full Route</div>
+            </div>
+          `;
+        }
+      })();
+    </script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="../../route-map.js"></script>
+  </body>
 </html>
